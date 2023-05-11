@@ -31,11 +31,10 @@ export const Section = styled.section`
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 32px;
-        
-
-        width: 475px;
-        height: 621px;
+        gap: 34px;
+    
+        width: 476px;
+        height: 500px;
 
         margin-right: 108px;
         padding: 64px;
@@ -46,15 +45,15 @@ export const Section = styled.section`
 
         h2{
             color:  ${({ theme }) => theme.COLORS.WHITE900};
-            
+            margin-bottom: 44px;
         }
 
        
 
         p {
         color:  ${({ theme }) => theme.COLORS.WHITE800};
-       
-
+        margin-bottom: 57px;
+         text-align-last: center;
 
         }
 

@@ -14,7 +14,9 @@ export function ErrorSign(){
 
       <Section>
          <h2>Ops</h2>
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi fugit reprehenderit laboriosam fugiat vel. Voluptatem earum libero quam, debitis repudiandae molestias distinctio accusantium enim aliquid, natus cupiditate itaque harum sapiente!</p>
+         <p>
+         Não foi possível confirmar seus dados! <br /> Você pode criar uma conta ou redefinir <br /> sua senha, para redefinir sua senha, envie um <br /> e-mail para lucas.tec@protonmail.com
+         </p>
     <Button
       title="Tentar novamente"
       />

@@ -8,6 +8,7 @@ export default {
         BLUE700: "#065E7C",
 
         BACKGROUND_RED900: "#750310",
+        RED800: "#92000E",
 
         WHITE900: "#FFFFFF",
         WHITE800: "#C4C4CC",
