@@ -34,7 +34,7 @@ export function SingIn(){
  return(
     <Container>
       <div className="title" >
-         <img src="../../assets/Polygon 1.svg" />
+         <img src="../src/assets/Polygon 1.png" />
          <h1>food explorer</h1>
       </div>
 

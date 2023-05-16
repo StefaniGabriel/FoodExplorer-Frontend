@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import responsive from "../../styles/responsive";
 
 export const Container = styled.div`
     display: flex;
@@ -14,12 +15,44 @@ export const Container = styled.div`
         display: flex;
         flex-direction: row;
 
-        margin-left: 153px;
+        gap: ${responsive(10)};
+
+        margin-left: ${responsive(135)} ;
 
         h1 {
+        font-size: ${responsive(42)};
         color:  ${({ theme }) => theme.COLORS.WHITE900}
     }
+
+    img {
+        width: ${responsive(49)};
+        height: ${responsive(49)};
     }
+    }
+
+    @media (max-width: 800px) {
+
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+    
+
+   .title{
+    margin: 0 auto;
+
+    h1{
+        font-size:  ${responsive(37)};
+    }
+
+   }
+
+  
+
+  
+
+}
+
+
 
 
   
@@ -31,14 +64,14 @@ export const Form = styled.form`
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 32px;
+        gap: ${responsive(32)};
         
 
-        width: 475px;
-        height: 500px;
+        width: ${responsive(476)};
+        height: ${responsive(540)};
 
-        margin-right: 108px;
-        padding: 64px;
+        margin-right: ${responsive(108)};
+        padding: ${responsive(64)};
 
         background-color:  ${({ theme }) => theme.COLORS.BACKGROUND_BLUE800};
 
@@ -46,27 +79,42 @@ export const Form = styled.form`
 
         h2{
             color:  ${({ theme }) => theme.COLORS.WHITE900};
-            
+            font-size: ${responsive(32)};
+            font-weight: 400;
         }
 
         section{
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: ${responsive(8)};
 
         width: 100%;
 
         span {
+        font-size: ${responsive(16)};
         color:  ${({ theme }) => theme.COLORS.WHITE800};
        
 
 
+        }}
+
+        @media (max-width: 800px) {
+
+        background: none;
+        margin: 0 auto;
+        margin-bottom: ${responsive(73)} ;
+
+        h2 {
+        display: none;
         }
+
+
+
+}
 
         
-        }
 
-       
+      
 
 
 `;

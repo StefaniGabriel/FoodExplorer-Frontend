@@ -1,15 +1,16 @@
 import { styled } from "styled-components";
+import responsive from "../../styles/responsive";
 
 export const Container = styled.button`
    
     align-items: center;
-    padding: 12px 32px;
+    padding:${responsive(12)} ${responsive(32)};
 
     border: none;
 
     background: none;
     color:  ${({ theme }) => theme.COLORS.WHITE900};
-    font-size: 14px;
+    font-size: ${responsive(14)};
 
     &:hover{
       opacity: 0.5;
