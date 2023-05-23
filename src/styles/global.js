@@ -25,10 +25,5 @@ export default createGlobalStyle`
          font-family: 'Poppins', sans-serif;
     }
 
-    @media (min-width: 800px) {
-        :root {
-            font-size: ${responsive(24, 800)};
-        }
-      }
 
 `;

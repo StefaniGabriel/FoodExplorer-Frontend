@@ -7,7 +7,7 @@ export const Container = styled.div`
     align-items: center;
     
 
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 
 
@@ -19,11 +19,9 @@ export const Container = styled.div`
         align-items: center;
         gap: ${responsive(10)};
 
-        margin-top: ${responsive(158)} ;
+        margin-top: ${responsive(135 + 64)} ;
 
         h1 {
-           
-
         font-size: ${responsive(37)};
         color:  ${({ theme }) => theme.COLORS.WHITE900}
     }

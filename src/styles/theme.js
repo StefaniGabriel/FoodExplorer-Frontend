@@ -6,6 +6,7 @@ export default {
 
 
         BLUE700: "#065E7C",
+        BLUE600: "#82F3FF",
 
         BACKGROUND_RED900: "#750310",
         RED800: "#92000E",
