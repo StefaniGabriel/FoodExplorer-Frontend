@@ -10,15 +10,7 @@ export default createGlobalStyle`
     :root {
       font-size: ${responsive(24)};
 
-      @media (min-width: 768px) {
-        font-size: ${responsive(18)};
-      }
-
-      @media (min-width: 1024px) {
-        font-size: ${responsive(16)};
-      }
-    }
-    }
+     }}
 
     body {
         background-color:  ${({ theme }) => theme.COLORS.BACKGROUND_BLUE900};
@@ -32,5 +24,11 @@ export default createGlobalStyle`
     h2, button {
          font-family: 'Poppins', sans-serif;
     }
+
+    @media (min-width: 800px) {
+        :root {
+            font-size: ${responsive(24, 800)};
+        }
+      }
 
 `;

@@ -3,24 +3,28 @@ import responsive from "../../styles/responsive";
 
 export const Container = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    
 
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+
 
   
     .title {
         display: flex;
         flex-direction: row;
-
+        justify-content: center;
+        align-items: center;
         gap: ${responsive(10)};
 
-        margin-left: ${responsive(135)} ;
+        margin-top: ${responsive(158)} ;
 
         h1 {
-        font-size: ${responsive(42)};
+           
+
+        font-size: ${responsive(37)};
         color:  ${({ theme }) => theme.COLORS.WHITE900}
     }
 
@@ -30,11 +34,11 @@ export const Container = styled.div`
     }
     }
 
-    @media (max-width: 800px) {
+    @media (min-width: 700px) {
 
     display: flex;
-    flex-direction: column;
-   justify-content: center;
+    flex-direction: row;
+   justify-content: space-between;
     
 
    .title{
@@ -74,6 +78,8 @@ export const Form = styled.form`
         padding: ${responsive(64)};
 
         background-color:  ${({ theme }) => theme.COLORS.BACKGROUND_BLUE800};
+
+
 
       
 
