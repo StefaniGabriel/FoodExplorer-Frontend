@@ -1,4 +1,4 @@
-import { Container, Menu } from "./styles";
+import { Container } from "./styles";
 import { FaBars } from 'react-icons/fa';
 import { FiCheck } from 'react-icons/fi'
 
@@ -7,9 +7,7 @@ export function Header(){
     return(
         <Container>
       
-            <Menu>
-                <FaBars size={24}/>
-            </Menu>
+            <FaBars />
 
             <div className="title" >
          
