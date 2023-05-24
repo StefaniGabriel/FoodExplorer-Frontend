@@ -6,7 +6,7 @@ import { AdminRoutes } from "./app.admin.routes";
 export function Routes(){
     return(
         <BrowserRouter>
-            <AdminRoutes />
+            <AuthRoutes />
         </BrowserRouter>
     )
 }
