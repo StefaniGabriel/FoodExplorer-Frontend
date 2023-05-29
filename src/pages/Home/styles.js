@@ -3,13 +3,11 @@ import responsive from "../../styles/responsive";
 import image from "../../assets/pngegg_2-removebg-preview.png";
 
 export const Container = styled.div`
- display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-
+    display: flex;
+    flex-direction: column;
   
+    width: 100%;
+    height: 100vh;
 
     .banner {
         display: flex;
@@ -23,8 +21,6 @@ export const Container = styled.div`
         margin-top: ${responsive(27)};
 
         background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
-
-     
 
 
     }
@@ -80,9 +76,7 @@ export const Image = styled.div`
     height: clamp(7.3rem, 2vw, 14.9rem);
     margin-top: ${responsive(-20)};
     margin-left: ${responsive(-16)};
-    
 
-    
     
     transform: matrix(1, 0, 0, 1, 0, 0);
     
