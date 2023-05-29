@@ -13,7 +13,7 @@ export const Container = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 83%;
+        width: 80%;
         height: clamp(6rem, 5vw, 12rem);
     
         margin-right: ${responsive(16)};
@@ -27,7 +27,7 @@ export const Container = styled.div`
 
    
 
-    section {
+    .banner-text {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;

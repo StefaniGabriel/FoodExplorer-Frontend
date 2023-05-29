@@ -17,3 +17,17 @@ export const Container = styled.section`
     }
 
 `;
+
+export const PenIcon = styled.span`
+    position: relative;
+    margin-top: ${responsive(16)};
+    margin-left: ${responsive(100)};
+
+    svg {
+      
+        width: clamp(1.2rem, 2vw, 2.4rem);
+        height: clamp(1.2rem, 2vw, 2.4rem);
+        color: ${({ theme }) => theme.COLORS.WHITE700},
+    }
+
+`;
