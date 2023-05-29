@@ -8,6 +8,7 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         gap: ${responsive(12)};
 
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLACK900};
@@ -21,10 +22,21 @@ export const Container = styled.div`
 
   
     
-    p {
+    .name-product {
+        font-family: Poppins , sans-serif;
+        font-size: clamp(0.5rem, 2vw, 1.6rem);
+        color: ${({ theme }) => theme.COLORS.BLUE600};
+    }
+
+    .description-product{
+        display: none;
+    }
+
+    p{
         font-size: clamp(0.4rem, 2vw, 1.4rem);
         color: ${({ theme }) => theme.COLORS.WHITE700};
-        }
+
+    }
 
     img {
         margin-top: ${responsive(20)};
@@ -33,13 +45,41 @@ export const Container = styled.div`
         border-radius: 50%;
         object-fit: cover;
     }
-    span {
-        font-family: Poppins , sans-serif;
-        font-size: clamp(0.5rem, 2vw, 1.6rem);
-        color: ${({ theme }) => theme.COLORS.BLUE600};
-        
-        
-    }
+  
+
+    @media (min-width: 700px) {
+       
+
+        .preview-product {
+        width: clamp(16rem, 5vw, 30.4rem);
+        height: clamp(25rem, 5vw, 46.2rem);
+
+        padding: ${responsive(5)};
+
+        }
+
+        .description-product{
+            display: block;
+            font-size: clamp(0.6rem, 2vw, 0.8rem);
+            color: ${({ theme }) => theme.COLORS.GRAY800};
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        p {
+            font-size: clamp(0.8rem, 2vw, 1.6rem);
+            font-weight: 700;
+        }
+
+        .name-product {
+            font-size: clamp(0.8rem, 2vw, 1.6rem);
+            
+        }    
+        }
 `;
 
 export const PenIcon = styled.span`
@@ -48,10 +88,14 @@ export const PenIcon = styled.span`
     margin-left: ${responsive(100)};
 
     svg {
-      
         width: clamp(1.2rem, 2vw, 2.4rem);
         height: clamp(1.2rem, 2vw, 2.4rem);
         color: ${({ theme }) => theme.COLORS.WHITE700},
+    }
+
+
+    @media (min-width: 700px) {
+        margin-left: ${responsive(170)};
     }
 
 `;

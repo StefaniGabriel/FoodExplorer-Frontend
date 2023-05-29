@@ -1,43 +1,36 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import responsive from "../../styles/responsive";
 
 export const Container = styled.div`
-  width: 100%;
-  height: ${responsive(48)};
-  display: flex;
-  align-items: center;
-
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLUE700};
-
-  input {
-    
     width: 100%;
-    height: ${responsive(48)};
-    border: 0;
-    padding: 19px 24px;
-    background: transparent;
-    color: ${({ theme }) => theme.COLORS.WHITE900};
-    font-size: ${responsive(16)};
-  
-  }
+    display: flex;
+    align-items: center;
 
-  &placeholder {
-    color: ${({ theme }) => theme.COLORS.GRAY900};
-    font-size: 14px;
-  }
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLUE700};
+    color: ${({ theme }) => theme.COLORS.GRAY700 };
 
-  svg {
-   
-    margin-right: 14px;
-    font-size: ${responsive(18)};
-    color: ${({ theme }) => theme.COLORS.GRAY800};
     
-  }
+    border-radius: ${responsive(5)};
+    padding: 0 ${responsive(20)};
 
-  @media (max-width: 600px) {
-    input {
-      text-align: start;
-      padding: ${responsive(10)} ${responsive(10)};
+    > input {
+        height: 56px;
+        width: 100%;
+
+        padding: 12px;
+        
+        color: ${({ theme }) => theme.COLORS.WHITE700};
+        background: transparent;
+        border: 0;
+
+        &:placeholder {
+            color: ${({ theme }) => theme.COLORS.GRAY900};
+        }
+
+        > svg {
+          font-size: 2.0rem;
+            margin-left: 1.6rem;
+        }
     }
-  }
+
 `;

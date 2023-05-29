@@ -4,7 +4,17 @@ import { FiLogOut, FiSearch } from 'react-icons/fi';
 import { Input } from "../Input";
 import { Button } from "../Button";
 
+import { useNavigate } from "react-router-dom";
+
 export function Header(){
+    const navigate = useNavigate();
+
+    function goNewProduct(){
+        navigate("/new")
+    }
+
+
+
 
     return(
         <Container>
@@ -21,15 +31,19 @@ export function Header(){
             </div>
             </div>
 
-            <Input
+           
+           <Input
+            className="search"
             placeholder="Busque por pratos ou ingredientes"
             type="text"
             icon={FiSearch}
             />
+        
 
             <Button
             className="newProduct"
             title={"Novo prato"}
+            onClick={goNewProduct}
             
             />
 

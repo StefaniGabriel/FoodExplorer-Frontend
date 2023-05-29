@@ -3,12 +3,18 @@ import { Header } from "../../components/Header";
 
 import { ProductDisplay } from "../../components/ProductDisplay";
 import { Section } from "../../components/Section";
+import { Footer } from "../../components/Footer";
+
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Home(){
+   
+
     useEffect(() => {
 
     }, [])
+
 
     return(
         <Container>
@@ -38,8 +44,7 @@ export function Home(){
                 <ProductDisplay />
             </Section>
 
-         
-
+         <Footer/>
 
     
           

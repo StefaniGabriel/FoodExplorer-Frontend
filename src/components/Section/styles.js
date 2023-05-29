@@ -16,6 +16,10 @@ export const Container = styled.section`
 
     }
 
+    @media (min-width: 700px) {
+       
+    }
+
 `;
 
 export const PenIcon = styled.span`

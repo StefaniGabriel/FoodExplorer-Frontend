@@ -2,7 +2,7 @@ import { Container } from "./styles";
 
 export function Input({ icon: Icon , ...rest}){
     return(
-        <Container className="search">
+        <Container>
 
              {Icon && <Icon size={20} />}
             <input {...rest} />

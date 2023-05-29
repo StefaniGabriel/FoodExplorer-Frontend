@@ -14,9 +14,10 @@ export function ProductItems(){
 
             </PenIcon>
 
-            <img src="../../assets/image 2.jpg" />
+            <img src="../../assets/prato01.png" />
             <p>Salada Ravanello </p>
-            <span>R$ 49,97</span>
+            <span className="description-product">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi inventore cupiditate dolores qui! Optio deserunt quas officia error quos, velit consectetur molestias unde quis recusandae esse obcaecati animi a quibusdam.</span>
+            <span className="name-product">R$ 49,97</span>
 
 
         </div>
