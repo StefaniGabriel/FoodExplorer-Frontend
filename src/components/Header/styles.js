@@ -123,3 +123,10 @@ export const Container = styled.div`
 
 `;
 
+export const InputSearch = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 64px;
+  flex-grow: 1;
+`;
+

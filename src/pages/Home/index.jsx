@@ -1,24 +1,61 @@
 import { Container, Image } from "./styles";
 import { Header } from "../../components/Header";
 
+import { FiSearch } from 'react-icons/fi';
+
 import { ProductDisplay } from "../../components/ProductDisplay";
 import { Section } from "../../components/Section";
 import { Footer } from "../../components/Footer";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Home(){
-   
+    const navigate = useNavigate();
+
+    const [search, setSearch] = useState('');
+
 
     useEffect(() => {
+        const token = localStorage.getItem('@Foodexplorer:token');
+        const user = localStorage.getItem('@Foodexplorer:user');
 
-    }, [])
+        if(!token && !user) {
+            navigate('/');
+        }
+
+
+
+    }, []);
+
+    useEffect(() => {
+        async function fetchMovies(){
+            const response = await api.get(`/product?title=${search}?category=${search}?ingredients=${search}`);
+           
+            setMovies(response.data);
+            
+        }
+       
+  
+        fetchMovies();
+  
+    },[search]);
+
+    
+
+
 
 
     return(
         <Container>
-            <Header/>
+            <Header>
+            <Input 
+            placeholder="Pesquisar pelo título"
+            type="text"
+            icon={<FiSearch />}
+            onChange={(e) => setSearch(e.target.value)}
+        />
+            </Header>
 
         
             <div className="banner">

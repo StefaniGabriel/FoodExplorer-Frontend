@@ -1,25 +1,35 @@
-import { Container } from "./styles";
+import { Container, InputSearch } from "./styles";
 import { FaBars } from 'react-icons/fa';
 import { FiLogOut, FiSearch } from 'react-icons/fi';
 import { Input } from "../Input";
 import { Button } from "../Button";
+import { ButtonLink } from "../ButtonLink";
 
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
-export function Header(){
+export function Header({ children }){
+    const { signOut } = useAuth();
     const navigate = useNavigate();
 
     function goNewProduct(){
         navigate("/new")
     }
 
+    function handleLogout(){
+        signOut();
+        navigate("/");
+    }
 
 
 
     return(
         <Container>
 
-            <FaBars className="FaBars" />  
+            <FaBars className="FaBars" />
+
+         
+ 
     
             <div className="logo" >
             <img src="../src/assets/Polygon 1.png" />
@@ -32,12 +42,10 @@ export function Header(){
             </div>
 
            
-           <Input
-            className="search"
-            placeholder="Busque por pratos ou ingredientes"
-            type="text"
-            icon={FiSearch}
-            />
+            <InputSearch>
+        
+          {children}
+          </InputSearch>
         
 
             <Button
@@ -47,7 +55,8 @@ export function Header(){
             
             />
 
-            <FiLogOut className="FiLogOut" />
+            <FiLogOut className="FiLogOut" 
+            onClick={handleLogout}/>
 
         </Container>
     )

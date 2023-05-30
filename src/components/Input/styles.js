@@ -11,13 +11,13 @@ export const Container = styled.div`
 
     
     border-radius: ${responsive(5)};
-    padding: 0 ${responsive(20)};
+  
 
-    > input {
-        height: 56px;
+    input {
+        height: ${responsive(48)};
         width: 100%;
 
-        padding: 12px;
+        padding: ${responsive(12)};
         
         color: ${({ theme }) => theme.COLORS.WHITE700};
         background: transparent;
@@ -29,7 +29,7 @@ export const Container = styled.div`
 
         > svg {
           font-size: 2.0rem;
-            margin-left: 1.6rem;
+            margin-left: ${responsive(16)};
         }
     }
 

@@ -4,10 +4,15 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonLink } from "../../components/ButtonLink";
 
+import { useAuth } from "../../hooks/auth";
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export function SingIn(){
+   const { signIn } = useAuth();
+   
+
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("")
 
@@ -16,6 +21,7 @@ export function SingIn(){
    function handleGoCreate(){
       navigate("/create");
    }
+
 
 
    function handleSignUp(){
@@ -28,7 +34,10 @@ export function SingIn(){
       if(password ==! isNaN){
         return alert("Senha comsomente Números!")
       }
+
+      signIn({ email, password });
       
+
    }
 
  return(

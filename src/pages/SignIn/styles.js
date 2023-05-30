@@ -37,7 +37,7 @@ export const Container = styled.div`
       margin: 0 auto;
 
       h1 {
-        font-size: clamp(2.6rem, 5vw, 3.7rem);
+        font-size: clamp(2.6rem, 2vw, 3.2rem);
       }
     }
   }
