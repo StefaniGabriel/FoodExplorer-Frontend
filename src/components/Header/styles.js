@@ -16,7 +16,13 @@ export const Container = styled.div`
 
     .FaBars {
         color: ${({ theme }) => theme.COLORS.WHITE900};
-        font-size:clamp(1rem, 5vw, 2.5rem);;  
+        font-size:clamp(1rem, 5vw, 2.5rem);
+
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
     }
   
 
@@ -24,7 +30,9 @@ export const Container = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: ${responsive(10)};
+        gap: ${responsive(8)};
+
+        margin-right: ${responsive(80)};
 
       
         img {
@@ -55,7 +63,7 @@ export const Container = styled.div`
         align-items: center;
         gap: ${responsive(10)};
 
-        margin-right: ${responsive(93)};
+     
         
     }
 
@@ -83,20 +91,20 @@ export const Container = styled.div`
             gap: ${responsive(10)};
 
             align-items: flex-start;
+            margin-right: ${responsive(0)};
 
         }
 
         .logo-text {
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: flex-end;  
 
-          
-            
+            gap: 0;
+
+           
         }
 
-        .search{
-            display: block;
-        }
+
 
         .FaBars{
             display: none;
@@ -110,9 +118,14 @@ export const Container = styled.div`
         .FiLogOut{
             display: block;
             color: ${({ theme }) => theme.COLORS.WHITE900};
-            font-size: 4.8rem;
+            font-size: 4rem;
 
             cursor: pointer;
+
+            &:hover {
+                opacity: 0.8;
+            
+            }
         }
 
     }
@@ -121,17 +134,24 @@ export const Container = styled.div`
 
 export const InputSearch = styled.div`
   background: transparent;
+  width: 100%;
+  
 
-  .search{
-        display: none;
-
-    }
+  display: none;
    
    @media (min-width: 700px) {
 
-    .search{
-        display: block;
-    }
+   display: block;
+
+    
+   svg {
+        color: ${({ theme }) => theme.COLORS.GRAY800};
+        font-size: 2rem;
+        margin-left: ${responsive(16)};
+       
+   }
+    
+
    }
 `;
 

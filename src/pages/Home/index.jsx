@@ -4,17 +4,19 @@ import { Header } from "../../components/Header";
 import { FiSearch } from 'react-icons/fi';
 
 import { ProductDisplay } from "../../components/ProductDisplay";
-import { Section } from "../../components/Section";
+
 import { Footer } from "../../components/Footer";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/Input";
+import { api } from "../../services/api";
 
 export function Home(){
     const navigate = useNavigate();
 
     const [search, setSearch] = useState('');
+    const [product, setProduct] = useState([]);
 
 
     useEffect(() => {
@@ -30,15 +32,15 @@ export function Home(){
     }, []);
 
     useEffect(() => {
-        async function fetchMovies(){
+        async function fetchProduct(){
             const response = await api.get(`/product?title=${search}?category=${search}?ingredients=${search}`);
            
-            setMovies(response.data);
+            setProduct(response.data);
             
         }
        
   
-        fetchMovies();
+        fetchProduct();
   
     },[search]);
 
@@ -50,6 +52,7 @@ export function Home(){
     return(
         <Container>
             <Header>
+           
             <Input 
             className="search"
             placeholder="Pesquisar pelo título"
@@ -70,18 +73,7 @@ export function Home(){
                 </section>
             </div>
 
-            <Section title="Refeições">
-                <ProductDisplay />
-               
-            </Section>
-
-            <Section title="Sobremesas">
-                <ProductDisplay />
-            </Section>
-
-              <Section title="Bebidas">
-                <ProductDisplay />
-            </Section>
+            <ProductDisplay/>
 
          <Footer/>
 

@@ -1,6 +1,6 @@
 import { Container, InputSearch } from "./styles";
 import { FaBars } from 'react-icons/fa';
-import { FiLogOut} from 'react-icons/fi';
+import { FiLogOut, FiSearch} from 'react-icons/fi';
 import { Button } from "../Button";
 
 
@@ -32,14 +32,14 @@ export function Header({ children }){
 
             <div className="logo-text">
             <h1>food explorer</h1>
-          
-          ''<span>admin</span>
+            <span>admin</span>
             </div>
+
             </div>
 
            
             <InputSearch>
-        
+            
             {children}
             </InputSearch>
         
@@ -48,7 +48,6 @@ export function Header({ children }){
             className="newProduct"
             title={"Novo prato"}
             onClick={goNewProduct}
-            
             />
 
             <FiLogOut className="FiLogOut" 

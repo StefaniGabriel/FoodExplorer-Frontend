@@ -2,9 +2,9 @@
 import { Container, PenIcon } from "./styles";
 
 
-export function ProductItems(){
+export function ProductItems({ data, ...rest }){
     return (
-        <Container>
+        <Container {...rest}>
          
         <div className="preview-product">
             <PenIcon>
@@ -14,10 +14,10 @@ export function ProductItems(){
 
             </PenIcon>
 
-            <img src="../../assets/prato01.png" />
-            <p>Salada Ravanello </p>
-            <span className="description-product">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi inventore cupiditate dolores qui! Optio deserunt quas officia error quos, velit consectetur molestias unde quis recusandae esse obcaecati animi a quibusdam.</span>
-            <span className="name-product">R$ 49,97</span>
+            <img src={data.image} />
+            <p>{data.name}</p>
+            <span className="description-product">{data.description}</span>
+            <span className="name-product">R$ {data.price} </span>
 
 
         </div>

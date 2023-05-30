@@ -97,9 +97,7 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.div`
-    position: absolute;
-    left: 100px;
-    bottom: 0;
+
     width: clamp(10rem, 2vw, 19.1rem);
     height: clamp(7.3rem, 2vw, 14.9rem);
     margin-top: ${responsive(-20)};
@@ -119,6 +117,10 @@ export const Image = styled.div`
     }
 
     @media (min-width: 700px) {
+
+        position: absolute;
+        left: 100px;
+        bottom: 0;
         width: clamp(32.6rem, 2vw, 65.6rem);
         height: clamp(21rem, 2vw, 41.2rem);
         
