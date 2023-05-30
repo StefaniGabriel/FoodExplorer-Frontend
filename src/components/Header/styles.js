@@ -59,11 +59,7 @@ export const Container = styled.div`
         
     }
 
-    .search{
-        display: none;
-
-    }
-   
+  
     
     .newProduct {
         display: none;
@@ -124,9 +120,18 @@ export const Container = styled.div`
 `;
 
 export const InputSearch = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0 64px;
-  flex-grow: 1;
+  background: transparent;
+
+  .search{
+        display: none;
+
+    }
+   
+   @media (min-width: 700px) {
+
+    .search{
+        display: block;
+    }
+   }
 `;
 

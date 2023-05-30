@@ -1,9 +1,8 @@
 import { Container, InputSearch } from "./styles";
 import { FaBars } from 'react-icons/fa';
-import { FiLogOut, FiSearch } from 'react-icons/fi';
-import { Input } from "../Input";
+import { FiLogOut} from 'react-icons/fi';
 import { Button } from "../Button";
-import { ButtonLink } from "../ButtonLink";
+
 
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
@@ -27,9 +26,6 @@ export function Header({ children }){
         <Container>
 
             <FaBars className="FaBars" />
-
-         
- 
     
             <div className="logo" >
             <img src="../src/assets/Polygon 1.png" />
@@ -37,15 +33,15 @@ export function Header({ children }){
             <div className="logo-text">
             <h1>food explorer</h1>
           
-          <span>admin</span>
+          ''<span>admin</span>
             </div>
             </div>
 
            
             <InputSearch>
         
-          {children}
-          </InputSearch>
+            {children}
+            </InputSearch>
         
 
             <Button

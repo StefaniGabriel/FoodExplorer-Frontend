@@ -9,6 +9,7 @@ import { Footer } from "../../components/Footer";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Input } from "../../components/Input";
 
 export function Home(){
     const navigate = useNavigate();
@@ -50,11 +51,12 @@ export function Home(){
         <Container>
             <Header>
             <Input 
+            className="search"
             placeholder="Pesquisar pelo título"
-            type="text"
-            icon={<FiSearch />}
+            type="search"
+            icon={FiSearch}
             onChange={(e) => setSearch(e.target.value)}
-        />
+            />
             </Header>
 
         
