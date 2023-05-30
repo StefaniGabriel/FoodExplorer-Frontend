@@ -42,8 +42,10 @@ export function ProductDisplay(){
         {
            
             categoryFilter.map((product) => {
+            
+            
                 
-               
+            
             })
             
         }
