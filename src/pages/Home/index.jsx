@@ -1,7 +1,7 @@
 import { Container, Image } from "./styles";
 import { Header } from "../../components/Header";
 
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch} from 'react-icons/fi';
 
 import { ProductDisplay } from "../../components/ProductDisplay";
 
@@ -18,6 +18,7 @@ export function Home(){
     const [search, setSearch] = useState('');
     const [product, setProduct] = useState([]);
 
+  
 
     useEffect(() => {
         const token = localStorage.getItem('@Foodexplorer:token');

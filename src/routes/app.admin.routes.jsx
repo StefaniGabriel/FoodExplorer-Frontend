@@ -1,6 +1,8 @@
 import { Routes, Route} from "react-router-dom";
 import { Home } from "../pages/Home";
 import { NewProduct } from "../pages/NewProduct";
+import { Menu } from "../pages/Menu";
+
 
 
 export function AdminRoutes(){
@@ -8,6 +10,7 @@ export function AdminRoutes(){
          <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/new" element={<NewProduct />} />
+                <Route path="/menu" element={<Menu />} />
 
          </Routes>
        

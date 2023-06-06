@@ -43,7 +43,7 @@ export const Container = styled.div`
 
 
         h1 {
-         white-space: nowrap;
+            white-space: nowrap;
         font-size: clamp(1rem, 2vw, 2.1rem);
         color:  ${({ theme }) => theme.COLORS.WHITE900};
         }
@@ -97,7 +97,8 @@ export const Container = styled.div`
 
         .logo-text {
             flex-direction: column;
-            justify-content: flex-end;  
+            justify-content: flex-end; 
+            align-items: flex-end; 
 
             gap: 0;
 
@@ -133,20 +134,18 @@ export const Container = styled.div`
 `;
 
 export const InputSearch = styled.div`
-  background: transparent;
-  width: 100%;
-  
+    background: transparent;
+    width: 100%;
+    display: none;
 
-  display: none;
+    @media (min-width: 700px) {
+
+    display: block;
    
-   @media (min-width: 700px) {
 
-   display: block;
-
-    
    svg {
         color: ${({ theme }) => theme.COLORS.GRAY800};
-        font-size: 2rem;
+        font-size: 2.4rem;
         margin-left: ${responsive(16)};
        
    }

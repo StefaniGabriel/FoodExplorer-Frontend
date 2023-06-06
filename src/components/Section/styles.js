@@ -2,6 +2,8 @@ import styled from "styled-components";
 import responsive from "../../styles/responsive";
 
 export const Container = styled.section`
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
 
     margin-left: ${responsive(24)};

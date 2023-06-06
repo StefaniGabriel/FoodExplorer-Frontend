@@ -16,8 +16,7 @@ export const Container = styled.div`
     input {
         height: ${responsive(48)};
         width: 100%;
-
-        padding: ${responsive(12)};
+        padding: ${responsive(16)};
         
         color: ${({ theme }) => theme.COLORS.WHITE700};
         background: transparent;

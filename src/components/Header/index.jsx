@@ -1,6 +1,6 @@
 import { Container, InputSearch } from "./styles";
 import { FaBars } from 'react-icons/fa';
-import { FiLogOut, FiSearch} from 'react-icons/fi';
+import { FiLogOut} from 'react-icons/fi';
 import { Button } from "../Button";
 
 
@@ -15,6 +15,11 @@ export function Header({ children }){
         navigate("/new")
     }
 
+    function goMenu(){
+        navigate("/admin/menu");
+    }
+
+
     function handleLogout(){
         signOut();
         navigate("/");
@@ -25,7 +30,7 @@ export function Header({ children }){
     return(
         <Container>
 
-            <FaBars className="FaBars" />
+            <FaBars className="FaBars" onClick={goMenu} />
     
             <div className="logo" >
             <img src="../src/assets/Polygon 1.png" />

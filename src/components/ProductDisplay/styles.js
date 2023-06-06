@@ -4,17 +4,26 @@ import responsive from "../../styles/responsive";
 
 export const Container = styled.div`
     display: flex;
-    flex-direction: row;
-    
-    .carousel-product{
+    flex-direction: column;
+    margin: 0 ${responsive(100)};
+
+    .carousel-product {
         display: flex;
         flex-direction: row;
         gap: ${responsive(12)};
-      
+     
+        
         overflow-x: auto; 
         scroll-behavior: smooth;
+
     }
 
+    .carousel-product::-webkit-scrollbar {
+        visibility: hidden;
+
+    }
+    
+  
     .preview-product {
         display: flex;
         flex-direction: column;
@@ -23,7 +32,7 @@ export const Container = styled.div`
         gap: ${responsive(12)};
 
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLACK900};
-        width: clamp(10rem, 5vw, 21rem);
+        width: clamp(20rem, 5vw, 21rem);
         height: clamp(15rem, 5vw, 29rem);
 
         border: 0.1rem solid ${({ theme }) => theme.COLORS.BACKGROUND_BLACK800};
@@ -31,9 +40,13 @@ export const Container = styled.div`
 
     }
 
+    .name-product{
+        font-size: clamp(0.4rem, 2vw, 1.4rem);
+        color: ${({ theme }) => theme.COLORS.WHITE700};
+
+    }
   
-    
-    .name-product {
+    .price-product {
         font-family: Poppins , sans-serif;
         font-size: clamp(0.5rem, 2vw, 1.6rem);
         color: ${({ theme }) => theme.COLORS.BLUE600};
@@ -43,12 +56,6 @@ export const Container = styled.div`
         display: none;
     }
 
-    p{
-        font-size: clamp(0.4rem, 2vw, 1.4rem);
-        color: ${({ theme }) => theme.COLORS.WHITE700};
-
-    }
-
     img {
         margin-top: ${responsive(20)};
         width: clamp(4.4rem, 10vw, 8.8rem);
@@ -56,16 +63,23 @@ export const Container = styled.div`
         border-radius: 50%;
         object-fit: cover;
     }
+
+    .FiChevronRight {
+            display: none;
+        }
   
 
     @media (min-width: 700px) {
        
+        
 
         .preview-product {
-        width: clamp(16rem, 5vw, 30.4rem);
+        position: relative;
         height: clamp(25rem, 5vw, 46.2rem);
+        width: clamp(22.5rem, 5vw, 45.2rem);
+        gap: ${responsive(27)};
 
-        padding: ${responsive(5)};
+       padding: ${responsive(5)};
 
         }
 
@@ -81,15 +95,53 @@ export const Container = styled.div`
             -webkit-box-orient: vertical;
         }
 
-        p {
-            font-size: clamp(0.8rem, 2vw, 1.6rem);
-            font-weight: 700;
-        }
-
         .name-product {
             font-size: clamp(0.8rem, 2vw, 1.6rem);
+            font-weight: 700;
+
+
+            svg{
+                font-size: 0.8rem;
+                
+            }
+        }
+
+        .price-product {
+            font-size: clamp(0.8rem, 2vw, 1.6rem);
             
-        }    
+        }
+    
+        .FiChevronRight {
+            position: absolute;
+            z-index: 1;
+            
+            display: flex;
+            justify-content: space-between;
+            
+            width: 86%;
+
+            margin-top: ${responsive(210)};
+
+            button {
+                background-color: transparent;
+                border: none;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            svg{
+                color: ${({ theme }) => theme.COLORS.WHITE900};
+                font-size: 3.5rem;
+
+            }
+
+            
+
+        }
+
+
         }
 
    
@@ -100,12 +152,13 @@ export const Container = styled.div`
 export const PenIcon = styled.span`
     position: relative;
     margin-top: ${responsive(16)};
-    margin-left: ${responsive(100)};
+    margin-left: ${responsive(130)};
 
     svg {
         width: clamp(1.2rem, 2vw, 2.4rem);
         height: clamp(1.2rem, 2vw, 2.4rem);
-        color: ${({ theme }) => theme.COLORS.WHITE700},
+        color: ${({ theme }) => theme.COLORS.WHITE700};
+        margin-right: ${responsive(10)};
     }
 
 

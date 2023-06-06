@@ -37,6 +37,7 @@ export function SingIn(){
 
       signIn({ email, password });
       
+      navigate("/admin")
 
    }
 

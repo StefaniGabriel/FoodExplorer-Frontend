@@ -6,7 +6,7 @@ export function Footer(){
         <Container>
             <footer>
             <div className="footer-content">
-            <img src="../../assets/Polygon-gray.png" alt="" />
+            <img src="../src/assets/Polygon-gray.png" alt="" />
             <span className="footer-name">food explorer</span>
             </div>
             <span className="footer-rights">© 2023 - Todos os direitos reservados.</span>

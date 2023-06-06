@@ -18,12 +18,13 @@ export const Container = styled.div`
     .footer-content {
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: ${responsive(7)};
     }
 
     img {
-        width: clamp(1.1rem, 2vw, 2.2rem);
-        height: clamp(0.8rem, 2vw, 1.9rem);
+        width: clamp(0.8rem, 2vw, 1.2rem);
+        height: clamp(0.8rem, 2vw, 1.2rem);
 
        
     }
@@ -43,6 +44,13 @@ export const Container = styled.div`
         footer {
         justify-content: space-between;
         padding: 0 ${responsive(100)};
+
+        img {
+        width: clamp(1.1rem, 2vw, 2.2rem);
+        height: clamp(1.1rem, 2vw, 2.2rem);
+
+       
+    }
        
     }}
 

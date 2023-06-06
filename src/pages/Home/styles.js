@@ -62,7 +62,6 @@ export const Container = styled.div`
 
     .banner{
         position: relative;
-      
        
         padding: ${responsive(100)};
         margin: 0 auto;
@@ -70,7 +69,6 @@ export const Container = styled.div`
         height: clamp(13rem, 5vw, 26rem);
         width: 85%;
         justify-content: center;
-
 
     }
 
@@ -102,9 +100,6 @@ export const Image = styled.div`
     height: clamp(7.3rem, 2vw, 14.9rem);
     margin-top: ${responsive(-20)};
     margin-left: ${responsive(-16)};
-
-    
-    transform: matrix(1, 0, 0, 1, 0, 0);
     
     background-image: url(${image});
     background-repeat: no-repeat;
