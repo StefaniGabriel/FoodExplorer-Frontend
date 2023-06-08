@@ -11,7 +11,7 @@ export const Container = styled.div`
         display: flex;
         flex-direction: row;
         gap: ${responsive(12)};
-     
+      
         
         overflow-x: auto; 
         scroll-behavior: smooth;
@@ -25,6 +25,7 @@ export const Container = styled.div`
     
   
     .preview-product {
+       
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -64,9 +65,21 @@ export const Container = styled.div`
         object-fit: cover;
     }
 
-    .FiChevronRight {
+    .buttonRight {
             display: none;
         }
+
+    .buttonLeft {
+            display: none;
+        }
+
+    
+    .space-product {
+        width: clamp(20rem, 5vw, 21rem);
+        height: clamp(15rem, 5vw, 29rem);
+
+        margin-bottom: ${responsive(120)};
+    }
   
 
     @media (min-width: 700px) {
@@ -111,20 +124,26 @@ export const Container = styled.div`
             
         }
     
-        .FiChevronRight {
+        .buttonRight {
             position: absolute;
             z-index: 1;
+
+            background: linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
+            transform: matrix(-1, 0, 0, 1, 0, 0);
             
             display: flex;
-            justify-content: space-between;
-            
-            width: 86%;
+          
+            width: 19rem;
+            height: 26rem;;
 
-            margin-top: ${responsive(210)};
+       
 
             button {
                 background-color: transparent;
                 border: none;
+                align-self: center;
+                    
+                margin-left: ${responsive(200)};
 
                 &:hover {
                     opacity: 0.5;
@@ -132,22 +151,65 @@ export const Container = styled.div`
             }
 
             svg{
+                z-index: 2;
+                
+                color: ${({ theme }) => theme.COLORS.WHITE900};
+                font-size: 3.5rem;
+
+            }
+          
+            
+
+        }
+
+        .buttonLeft {
+            position: absolute;
+
+            z-index: 1;
+
+            background: linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
+            
+            display: flex;
+           
+            width: 19rem;
+            height: 26rem;;
+            
+            margin-left: ${responsive(720)};
+            
+
+            button {
+                background-color: transparent;
+                border: none;
+                align-self: center;
+                margin-left: ${responsive(130)};
+              
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            svg{
+                z-index: 2;
+               
                 color: ${({ theme }) => theme.COLORS.WHITE900};
                 font-size: 3.5rem;
 
             }
 
-            
+         
+        }}
 
-        }
-
-
-        }
+        .hidden {
+            display: none;
+            }
 
    
 
 
 `;
+
+export const Product = styled.div``;
 
 export const PenIcon = styled.span`
     position: relative;
