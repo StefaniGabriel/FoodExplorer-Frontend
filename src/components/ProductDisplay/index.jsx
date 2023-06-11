@@ -28,12 +28,20 @@ export function ProductDisplay(){
     });
 
     const showButton = () => {
-        const buttonLeft = document.querySelector('.buttonLeft');
-        const buttonRight = document.querySelector('.buttonRight');
-
         
+        const filterLength = categoryFilter.filter((product) => product.category === "comida")
+        console.log(filterLength.length)
 
+        if(filterLength.length > 3){
+            return true;
+        }else{
+            return false;
+        }
+
+    
     }
+
+    console.log(showButton())
 
 
     const handleLeftClick = (e) => {
@@ -103,8 +111,7 @@ export function ProductDisplay(){
                                         )
                                     }
 
-                                 
-                                
+                               
                                  
 
                                    
