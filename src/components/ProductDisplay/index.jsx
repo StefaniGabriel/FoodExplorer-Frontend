@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { FaChevronRight} from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
 
 import { Container, PenIcon, Product} from "./styles";
@@ -27,32 +26,29 @@ export function ProductDisplay(){
         
     });
 
-    const showButton = () => {
-        
-        const filterLength = categoryFilter.filter((product) => product.category === "comida")
-        console.log(filterLength.length)
+    const showButton = (category) => {
+        const categoryCounts = categoryFilter.reduce((counts, product) => {
+          const { category } = product;
+          counts[category] = (counts[category] || 0) + 1;
+          return counts;
+        }, {});
+      
+        return categoryCounts[category] > 3;
+      };
 
-        if(filterLength.length > 3){
-            return true;
-        }else{
-            return false;
-        }
-
-    
-    }
-
-    console.log(showButton())
 
 
     const handleLeftClick = (e) => {
         e.preventDefault();
-       carouselRef.current.scrollLeft -= 1000;
+        console.log(carouselRef.current.scrollLeft);
+       carouselRef.current.scrollLeft -= carouselRef.current.offsetWidth;
        
     }
     
     const handleRightClick = (e) => {
         e.preventDefault();
-        carouselRef.current.scrollLeft += 1000;
+        console.log(carouselRef.current.scrollLeft);
+        carouselRef.current.scrollLeft += carouselRef.current.offsetWidth;
         
     }
 
@@ -62,6 +58,7 @@ export function ProductDisplay(){
     useEffect(() => {
         async function fetchProduct(){
             const response = await api.get(`/product`);
+            
             setData(response.data);
             
         }
@@ -76,17 +73,22 @@ export function ProductDisplay(){
           
 
         {
+           
+
             <section>
+
             {
                 uniqueCategories.map((category, index) => {
-                    const lowerCaseCategory = category.toLowerCase();
+                    const toUpperCategory = category.charAt(0).toUpperCase() + category.slice(1);
+                   
                     return (
-                        <Product>
-                        <Section key={index} title={lowerCaseCategory} />
+                        <Product key={index}>
+                        <Section key={index} title={toUpperCategory} />
                         <div className="carousel-product"  ref={carouselRef}>
-                            <div className="buttonRight">
-                            <button  onClick={handleLeftClick}><FiChevronRight /></button>
+                        <div className={`buttonLeft ${showButton(category) ? '' : 'hidden'}`}>
+                            <button onClick={handleLeftClick} ><FiChevronRight /></button>
                             </div>
+                       
                            
                             
 
@@ -109,42 +111,32 @@ export function ProductDisplay(){
                                                
                                             </div>
                                         )
-                                    }
-
-                               
-                                 
-
-                                   
-                                   
-
-                                   
+                                    } 
                                     
                                         
                                 }
                                 )
                             }
 
-                            <div className="buttonLeft">
-                            <button  onClick={handleRightClick}><FiChevronRight /></button>
-                            </div>
+                        <div className={`buttonRight ${showButton(category) ? '' : 'hidden'}`}>
+                        <button onClick={handleRightClick} ><FiChevronRight /></button>
+                        </div>
                             
                         </div>
                         </Product>
-                    
+
+
+
+
+
+
                     )
                
                 })
             }
 
             
-
-           
-          
-
-          
-           
-            </section>
-
+        </section>
         }
           
         

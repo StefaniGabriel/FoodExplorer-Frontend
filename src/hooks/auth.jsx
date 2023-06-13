@@ -14,7 +14,8 @@ function AuthProvider({ children }) {
                 email,
                 password
                 
-            })
+            });
+
             const { token, user } = response.data;
 
             localStorage.setItem("@Foodexplorer:user", JSON.stringify(user));
@@ -23,16 +24,15 @@ function AuthProvider({ children }) {
             api.defaults.headers.common['Authorization']= `Bearer ${token}`;
     
             setData({ token, user });
+           
 
-            alert("Login realizado com sucesso!");
+        } catch (error) {
+           
 
-        } catch(error) {
-            if(error.response){
-                alert(error.response.data.message);
-            } else {
-                alert("Não foi possível fazer login.");
-            }
-        }}
+            throw new Error('Falha na autenticação'); 
+          }}
+
+    
     
 
     async function signOut() {
@@ -53,6 +53,8 @@ function AuthProvider({ children }) {
 
         }
     }, []);
+
+  
 
 
 

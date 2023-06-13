@@ -19,7 +19,7 @@ export const Container = styled.section`
     }
 
     @media (min-width: 700px) {
-       
+        margin-left: ${responsive(60)};
     }
 
 `;

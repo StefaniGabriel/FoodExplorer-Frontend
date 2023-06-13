@@ -51,7 +51,7 @@ export function Header({ children }){
 
             <Button
             className="newProduct"
-            title={"Novo prato"}
+            title={"Novo produto"}
             onClick={goNewProduct}
             />
 

@@ -22,23 +22,30 @@ export function SingIn(){
       navigate("/create");
    }
 
-
-
-   function handleSignUp(){
+   function validateLogin(){
       if(!email || !password){
-        return alert("Preencha todos os campos!")
-      }
-      if((email.search("@")==-1)){
-         return alert("E-mail informado inválido!")
-      }
-      if(password ==! isNaN){
-        return alert("Senha comsomente Números!")
-      }
+         return alert("Preencha todos os campos!")
+       }
+       if((email.search("@")==-1)){
+          return alert("E-mail informado inválido!")
+       }
+   }
 
-      signIn({ email, password });
+ 
+
+   async function handleSignUp(){
+
+      validateLogin();
+
+      try {
+         await validateLogin();
+         await signIn({ email, password });
+     
+     
+       } catch (error) {
       
-      navigate("/admin")
-
+         navigate("/error");
+       }
    }
 
  return(
@@ -55,6 +62,7 @@ export function SingIn(){
          <Input
             placeholder="nome@email.com"
             type="text"
+            
             onChange={e => setEmail(e.target.value)}
             />
       </section>
@@ -64,6 +72,7 @@ export function SingIn(){
          <Input
             placeholder="Digite sua senha"
             type="password"
+            maxLength="6"
             onChange={e => setPassword(e.target.value)}
             />
       </section>

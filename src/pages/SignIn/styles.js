@@ -48,7 +48,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   gap: ${responsive(32)};
-  width: clamp(18rem, 5vw, 32rem);
+  width: clamp(18rem, 5vw, 30rem);
   height: clamp(18rem, 5vw, 48rem);
   margin-top: ${responsive(73)};
   margin-bottom: ${responsive(73)};
@@ -81,9 +81,10 @@ export const Form = styled.form`
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLUE800};
   margin: 0 auto;
 
-  width: ${responsive(450)};
-  height: ${responsive(490)};
-  padding:  ${responsive(64)} ;
+  width: ${responsive(430)};
+  height: ${responsive(480)};
+  padding:  ${responsive(64)};
+  margin-top: ${responsive(10)};
 
   .title {
     margin-top: ${responsive(135)};
@@ -91,6 +92,7 @@ export const Form = styled.form`
   }
   
   h2 {
+    margin-top: ${responsive(-16)};
     display: block;
     color: ${({ theme }) => theme.COLORS.WHITE900};
     font-size: clamp(1.5rem, 5vw, 2.5rem);

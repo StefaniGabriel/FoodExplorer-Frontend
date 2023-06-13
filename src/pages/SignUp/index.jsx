@@ -28,10 +28,6 @@ export function SignUp(){
       
    }
 
- 
-    
-   
-
    function handleBack(){
       navigate("/");
    }
