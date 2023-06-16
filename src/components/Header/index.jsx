@@ -12,11 +12,11 @@ export function Header({ children }){
     const navigate = useNavigate();
 
     function goNewProduct(){
-        navigate("/new")
+        navigate('/new');
     }
 
     function goMenu(){
-        navigate("/admin/menu");
+        navigate("/menu");
     }
 
 

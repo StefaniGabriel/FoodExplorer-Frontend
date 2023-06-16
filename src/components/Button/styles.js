@@ -6,7 +6,7 @@ export const Container = styled.button`
     height: ${responsive(48)};
 
     align-items: center;
-    padding:${responsive(12)} ${responsive(32)};
+    padding:${responsive(8)} ${responsive(20)};
 
     border: none;
 
@@ -16,10 +16,17 @@ export const Container = styled.button`
     
     cursor: pointer;
     
-    font-size: clamp(1rem, 5vw, 1rem);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    white-space: nowrap;
 
      &:hover{
       opacity: 0.7;
+    }
+
+    @media (min-width: 700px)  {
+
+      padding:${responsive(12)} ${responsive(32)};
+
     }
 
  

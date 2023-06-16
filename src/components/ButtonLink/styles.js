@@ -15,6 +15,9 @@ export const Container = styled.button`
       opacity: 0.5;
     }
 
+    svg {
+      color:  ${({ theme }) => theme.COLORS.WHITE900};
+    }
  
 
 `;

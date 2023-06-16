@@ -40,14 +40,14 @@ export function ProductDisplay(){
 
     const handleLeftClick = (e) => {
         e.preventDefault();
-        console.log(carouselRef.current.scrollLeft);
+      
        carouselRef.current.scrollLeft -= carouselRef.current.offsetWidth;
        
     }
     
     const handleRightClick = (e) => {
         e.preventDefault();
-        console.log(carouselRef.current.scrollLeft);
+       
         carouselRef.current.scrollLeft += carouselRef.current.offsetWidth;
         
     }

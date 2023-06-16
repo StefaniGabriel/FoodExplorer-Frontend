@@ -12,7 +12,7 @@ export const Container = styled.div`
         flex-direction: row;
         gap: ${responsive(12)};
         
-        overflow-x: auto; 
+        overflow-x: scroll; 
         scroll-behavior: smooth;
     
     }

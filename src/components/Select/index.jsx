@@ -5,8 +5,8 @@ export function Select({ icon: Icon, options, ...rest}){
         <Container>
             <select {...rest}>
             <option value="meals">Refeição</option>
-            <option value="drinks">Sobremesa</option>
-            <option value="desserts">Bebida</option>
+            <option value="desserts">Sobremesa</option>
+            <option value="drinks">Bebida</option>
             {Icon && <Icon />}
             </select>
         </Container>
