@@ -4,7 +4,8 @@ import responsive from "../../styles/responsive";
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
-
+    align-items: center;
+    
     width: fit-content;
    
     background-color: ${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.GRAY300};
@@ -16,13 +17,7 @@ export const Container = styled.div`
     > button {
         border: none;
         background:  none;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        
-      
+       
 
         &:focus {
             outline: none;

@@ -7,14 +7,15 @@ import { Menu } from "../pages/Menu";
 
 
 export function AdminRoutes(){
+    
     return(
-         <Routes>
-                <Route path="/" element={<NewProduct />} />
-                <Route path='/new' element={<NewProduct />} />
-                <Route path="/details" element={<ProductDetails />} />
-                <Route path="/menu" element={<Menu />} />
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/new" element={<NewProduct /> } />
+            <Route path="/details/:id" element={<ProductDetails />} />
+            <Route path="/menu" element={<Menu />} />
 
-         </Routes>
+      </Routes>
        
     )
 }

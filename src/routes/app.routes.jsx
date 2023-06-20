@@ -9,13 +9,11 @@ export function AppRoutes() {
     const { user } = useAuth();
     const isAdmin = user && user.type === "admin"; 
 
-
- 
     return (
         <Routes>
-            <Route path="/" element={isAdmin ? <AdminRoutes /> : <ClientRoutes />} />
-      
-    
+            <Route path="/admin/*" element={<AdminRoutes />} />
+            <Route path="/*" element={<ClientRoutes />} />
+
         </Routes>
     );
 }

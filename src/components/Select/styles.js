@@ -9,8 +9,11 @@ export const Container = styled.div`
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLUE500};
     color: ${({ theme }) => theme.COLORS.GRAY700 };
-    border-radius: ${responsive(5)};
+
+    border-radius: ${responsive(8)};
     padding: 0 ${responsive(20)};
+    
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     
     > select {
         height: ${responsive(48)};
@@ -19,7 +22,7 @@ export const Container = styled.div`
         border: none;
         outline: none;
 
-        font-size: clamp(0.8rem, 2vw, 1.2rem);
+       
         color: ${({ theme }) => theme.COLORS.WHITE800};
 
     }
@@ -31,9 +34,7 @@ export const Container = styled.div`
     option {
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLUE500};
         color: ${({ theme }) => theme.COLORS.WHITE800};
-        font-size: clamp(0.8rem, 2vw, 1.2rem);
-
-       
+      
         border: none;
         outline: none;
 
