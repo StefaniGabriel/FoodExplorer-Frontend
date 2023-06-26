@@ -2,39 +2,50 @@ import { useEffect, useState } from "react";
 import { api } from "../services/api";
 
 function useProduct() {
-  const [product, setProduct] = useState(null)
+  const [product, setProduct] = useState("")
 
 
 
-  async function createProduct({ name, description, price, category, image }) {
+  async function createProduct({ name, category, description,ingredients, price }) {
 
     try{
       const response = await api.post('/product', {
         name: name,
         category: category,
         description: description,
+        ingredients: ingredients,
         prices: price,
-         
       });
 
-      updatedImage({id: response.data.id, image: image});
-
-      const data =  await response.json();
     
+      
       setProduct([...product, data]);
+      
+      return data;
     }
     catch(error){
-      alert(error.response.data.message);
+      alert(console.log(error));
     }
   }
 
-    async function updatedImage(id, image) {
-        const response = await api.patch(`/product/id=${id}`, {
-            image
+
+    async function imageUpload({ id, image }) {
+        const formData = new FormData();
+        formData.append("image", image);
+
+        
+        const response = await api.patch(`/product/image/${id}`, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            body: image,
         });
-        const data = await response.json();
-        setProduct([...product, data]);
+
+        product.image = response.data.image;
+      
+
     }
+    
 
     async function deleteProduct(id){
         await api.delete(`/product/${id}`);
@@ -54,20 +65,14 @@ function useProduct() {
         setProduct([...product, data]);
     }
 
-    async function imageProduct({ id, image }) {
-        const response = await api.patch(`/product/${id}`, {
-            image
-        });
-        const data = await response.json();
-        setProduct([...product, data]);
-    }
+
 
     return {
         product,
         createProduct,
         deleteProduct,
         updateProduct,
-        updatedImage
+      imageUpload
 
     }
  

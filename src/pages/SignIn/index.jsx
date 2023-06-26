@@ -40,7 +40,7 @@ export function SingIn(){
       try {
          await validateLogin();
          await signIn({ email, password });
-     
+         navigate("/admin");
      
        } catch (error) {
       

@@ -14,20 +14,24 @@ import { Footer } from "../../components/Footer";
 import { useState } from "react";
 import { useProduct } from "../../hooks/product";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../services/api";
 
 
-export function NewProduct(){
+export function EditProduct(){
     const [image, setImage] = useState('');
+    
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
+    const [ingredients, setIngredients] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
-    const [ingredients, setIngredients] = useState([]);
     const [newIngredient, setNewIngredient] = useState('');
 
-    const { createProduct , imageUpload} = useProduct();
+    const { createProduct } = useProduct();
     const navigate = useNavigate();
+
+    function handleBack(){
+        navigate(-1);
+    }
 
 
     function handleSelectImage(event){
@@ -36,17 +40,15 @@ export function NewProduct(){
         }
 
         const selectedImage = event.target.files[0];
-     
         const selectedImagePreview = URL.createObjectURL(selectedImage);
 
         setImage(selectedImagePreview);
-
     }
-
 
     function handleDeleteImage(){
-        setImage(null);
+        setImage('');
     }
+    
 
     function handleAddIngredient(){
         if(!newIngredient){
@@ -63,13 +65,16 @@ export function NewProduct(){
         setIngredients(newIngredients);
     }
 
-    function handleErrorCreateProduct(){
-        
+ 
+
+    async function handleEditProduct(){
+    
+
         if(!name || !category || !ingredients || !price || !description || !image){
             alert('Preencha todos os campos');
             return;
         }
-
+        
         const correctPrice = price.replace(',', '.');
 
         if(isNaN(correctPrice)){
@@ -83,29 +88,13 @@ export function NewProduct(){
             alert('Insira um valor válido');
             return;
         }
+
+      
     }
 
-
-    async function handleCreateProduct(){
-
-        handleErrorCreateProduct();
-
-        const response = await api.post('/product', {
-            name: name,
-            category: category,
-            description: description,
-            ingredients: ingredients,
-            prices: price,
-        });
-
-        const id = response.data.id;
-
-        const responseImage =  await api.post(`/product/image/${id}`, {
-        image: image
-
-        });
-   
-       
+    function handleExcludeProduct(){
+        alert('Produto excluído com sucesso');
+        navigate('/admin');
     }
 
 
@@ -116,13 +105,14 @@ export function NewProduct(){
             
         <div className="back">
         <FiChevronLeft size={20} />
-        <ButtonLink title="Voltar" />                   
+        <ButtonLink 
+        onClick={handleBack}
+        title="Voltar" />                   
         </div>
          
        <Form>
-      
-
-        <h2>Adicionar produto</h2>
+    
+        <h2>Editar produto</h2>
        <div className="row-1">
              <div className="input-wrapper">
                 <span className="input-name">Imagem do prato</span>
@@ -150,7 +140,7 @@ export function NewProduct(){
                     <label htmlFor="image">
                         <span>
                             <FiUpload />
-                            Selecione uma imagem
+                            Selecione imagem para alterá-la
 
                         </span>
 
@@ -248,10 +238,21 @@ export function NewProduct(){
         </div>
 
         <div className="button">
-            <Button title="Cadastrar produto" 
-            onClick={handleCreateProduct}
+        
+            <Button 
+            className="button-exclude-product"
+            title="Excluir produto"
+            onClick={handleExcludeProduct}
             />
+
+            <Button
+             className="button-edit-product"
+             title="Salvar alterações" 
+            onClick={handleEditProduct}
+            />
+
         </div>
+       
        </Form>
 
      

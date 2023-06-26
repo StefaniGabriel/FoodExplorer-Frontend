@@ -12,7 +12,7 @@ export function Header({ children }){
     const navigate = useNavigate();
 
     function goNewProduct(){
-        navigate('/new');
+        navigate('/admin/new');
     }
 
     function goMenu(){

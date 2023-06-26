@@ -9,6 +9,7 @@ export default {
 
         BACKGROUND_BLACK900: "#00070A",
         BACKGROUND_BLACK800: "#000204",
+     
 
 
         BLUE700: "#065E7C",
@@ -26,6 +27,7 @@ export default {
         WHITE700: "#E1E1E6",
         WHITE600: "#FFFAF1",
         
+        BACKGROUND_GRAY900: "#192227",
         GRAY900: "#7C7C8A",
         GRAY800: "#C4C4CC",
         GRAY700: "#4D585E",
@@ -33,6 +35,7 @@ export default {
         GRAY500: "#192227",
         GRAY400: "#0D161B",
         GRAY300: "#78797B",
+        
       
     }
 }

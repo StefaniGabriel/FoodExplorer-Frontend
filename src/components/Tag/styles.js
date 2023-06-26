@@ -4,7 +4,7 @@ import responsive from "../../styles/responsive";
 export const Container = styled.span`
     font-size: ${responsive(12)};
     color: ${({ theme }) => theme.COLORS.WHITE900};
-    background-color: ${({ theme }) => theme.COLORS.GRAY600};
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_GRAY900};
 
     padding: ${responsive(16)};
     border-radius: ${responsive(8)};

@@ -41,14 +41,16 @@ export const Container = styled.div`
     }
 
     .name-product{
-        font-size: clamp(0.4rem, 2vw, 1.4rem);
+        display: flex;
+        align-items: center;
+        font-size: clamp(1rem, 2vw, 1.4rem);
         color: ${({ theme }) => theme.COLORS.WHITE700};
 
     }
   
     .price-product {
         font-family: Poppins , sans-serif;
-        font-size: clamp(0.5rem, 2vw, 1.6rem);
+        font-size: ${responsive(16)};
         color: ${({ theme }) => theme.COLORS.BLUE600};
     }
 
@@ -94,7 +96,7 @@ export const Container = styled.div`
 
         .description-product{
             display: block;
-            font-size: clamp(0.6rem, 2vw, 0.8rem);
+            font-size: clamp(0.6rem,0.6rem + 2vw, 0.8rem);
             color: ${({ theme }) => theme.COLORS.GRAY800};
 
             overflow: hidden;
@@ -115,7 +117,7 @@ export const Container = styled.div`
         }
 
         .price-product {
-            font-size: clamp(0.8rem, 2vw, 1.6rem);
+            font-size: clamp(1rem, 2vw, 1.6rem);
             
         }
     
