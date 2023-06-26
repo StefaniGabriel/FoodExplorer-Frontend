@@ -82,8 +82,7 @@ export function ProductDisplay(){
           
 
         {
-           
-
+          
             <section>
 
             {
@@ -92,14 +91,14 @@ export function ProductDisplay(){
                    
                     return (
                         <Product key={index}>
-                        <Section key={index} title={toUpperCategory} />
+                        <Section title={toUpperCategory} />
                         <div className="carousel-product"  ref={carouselRef}>
+
                         <div className={`buttonLeft ${showButton(category) ? '' : 'hidden'}`}>
-                            <button onClick={handleLeftClick} ><FiChevronRight /></button>
+                            <FiChevronRight onClick={handleRightClick} />
                             </div>
+                     
                        
-                           
-                            
 
                             {
                                 categoryFilter.map((product, index) => {
@@ -137,18 +136,14 @@ export function ProductDisplay(){
                                 }
                                 )
                             }
+                            z
 
                         <div className={`buttonRight ${showButton(category) ? '' : 'hidden'}`}>
-                        <button onClick={handleRightClick} ><FiChevronRight /></button>
+                            <FiChevronRight onClick={handleLeftClick} />
                         </div>
                             
                         </div>
                         </Product>
-
-
-
-
-
 
                     )
                
