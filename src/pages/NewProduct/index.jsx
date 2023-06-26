@@ -26,8 +26,6 @@ export function NewProduct(){
     const [ingredients, setIngredients] = useState([]);
     const [newIngredient, setNewIngredient] = useState('');
 
-    const { createProduct , imageUpload} = useProduct();
-    const navigate = useNavigate();
 
 
     function handleSelectImage(event){
@@ -90,24 +88,33 @@ export function NewProduct(){
 
         handleErrorCreateProduct();
 
+     
         const response = await api.post('/product', {
-            name: name,
-            category: category,
-            description: description,
-            ingredients: ingredients,
-            prices: price,
+            name,
+            category,
+            description,
+            ingredients,
+            prices: Number(price.replace(',', '.')),
         });
+    
 
-        const id = response.data.id;
+        const { id: productId } = response.data;
+        
 
-        const responseImage =  await api.post(`/product/image/${id}`, {
-        image: image
+        if (image) {
+           const fileImage = new FormData();
+           fileImage.append("image", image);
+  
+           await api.patch(`product/image/${productId}`, fileImage);
+        }
 
-        });
-   
-       
     }
 
+
+       
+
+       
+    
 
     return(
        <Container>
@@ -158,7 +165,7 @@ export function NewProduct(){
                         id="image"
                         type="file"
                         className="input-image-product"
-                        onChange={handleSelectImage}
+                        onChange={e => handleSelectImage(e)}
 
                         />
 
