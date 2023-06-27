@@ -13,7 +13,8 @@ import { api } from "../../services/api";
 
 export function Details(){
     const [data, setData] = useState(null);
-  
+
+   
 
     const params = useParams();
 
@@ -24,7 +25,7 @@ export function Details(){
         navigate(-1);
     }
 
-
+   
 
     useEffect(() => {
         async function getProduct(){
@@ -35,6 +36,8 @@ export function Details(){
         getProduct();  
     }
     , []);
+
+    console.log(data);
 
     return(
        <Container>
@@ -48,6 +51,7 @@ export function Details(){
             </div>
 
             { data && (
+                
                     
                         <div className="details-container">
 

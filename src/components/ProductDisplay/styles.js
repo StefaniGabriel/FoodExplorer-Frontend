@@ -5,6 +5,17 @@ import responsive from "../../styles/responsive";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
+
+    .loading {
+        margin: 0 auto;
+        margin-top: ${responsive(50)};
+        margin-bottom: ${responsive(150)};
+
+        h1 {
+            color: ${({ theme }) => theme.COLORS.GRAY900};
+            font-weight: 500;
+        }
+    }
     
 
     .carousel-product {
@@ -88,7 +99,7 @@ export const Container = styled.div`
         position: relative;
         height: ${responsive(350)};
         width: ${responsive(230)};
-        gap: ${responsive(27)};
+        gap: ${responsive(15)};
 
         padding: ${responsive(20)};
 

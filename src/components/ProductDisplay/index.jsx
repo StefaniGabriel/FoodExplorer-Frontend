@@ -3,6 +3,7 @@ import { FiChevronRight } from "react-icons/fi";
 
 import { Container, PenIcon, Product} from "./styles";
 import { Section } from "../Section";
+
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +17,9 @@ export function ProductDisplay(){
     const uniqueCategories = [...new Set(categories)];
    
     const navigate = useNavigate();
+
+   
+
 
     const categoryFilter = data.filter((product) => {
 
@@ -55,12 +59,12 @@ export function ProductDisplay(){
     }
 
     function GoDetails(product){
-        navigate(`/admin/details/id=${product.id}`)
+        navigate(`/admin/details/${product.id}`)
     }
 
     
     function goToEdit(product){
-        navigate(`/admin/edit/id=${product.id}`)
+        navigate(`/admin/edit/${product.id}`)
     }
 
 
@@ -81,7 +85,13 @@ export function ProductDisplay(){
         <Container>
           
 
-        {
+        {   data.length === 0 ?
+            <div className="loading">
+                <h1>Ainda não há produtos cadrastrado</h1>
+            
+              
+            </div>
+            :
           
             <section>
 
@@ -95,7 +105,9 @@ export function ProductDisplay(){
                         <div className="carousel-product"  ref={carouselRef}>
 
                         <div className={`buttonLeft ${showButton(category) ? '' : 'hidden'}`}>
+                          <button>
                             <FiChevronRight onClick={handleRightClick} />
+                          </button>
                             </div>
                      
                        
@@ -107,6 +119,8 @@ export function ProductDisplay(){
                                         const toUpperDescription = product.description.charAt(0).toUpperCase() + product.description.slice(1);
                                         product.name = toUpperName;
                                         product.description = toUpperDescription;
+                                        const avatarUrl = product.image ? `${api.defaults.baseURL}/files/${product.image}` : null;
+
 
                                         return (
                                             <div className="preview-product" 
@@ -123,7 +137,7 @@ export function ProductDisplay(){
                                                     </svg>
                                         
                                                 </PenIcon>
-                                                <img src={product.image} alt={product.name} />
+                                                <img src={avatarUrl} alt={product.name} />
                                                 <span className="name-product"> {product.name} <FiChevronRight /> </span>
                                                 <span className="description-product">{product.description}</span>
                                                 <span className="price-product">R${product.prices}</span>
@@ -139,7 +153,9 @@ export function ProductDisplay(){
                             z
 
                         <div className={`buttonRight ${showButton(category) ? '' : 'hidden'}`}>
+                            <button>
                             <FiChevronRight onClick={handleLeftClick} />
+                            </button>
                         </div>
                             
                         </div>

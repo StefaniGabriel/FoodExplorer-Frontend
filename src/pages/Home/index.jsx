@@ -18,8 +18,6 @@ export function Home(){
     const [search, setSearch] = useState('');
     const [product, setProduct] = useState([]);
 
-  
-
     useEffect(() => {
         const token = localStorage.getItem('@Foodexplorer:token');
         const user = localStorage.getItem('@Foodexplorer:user');
