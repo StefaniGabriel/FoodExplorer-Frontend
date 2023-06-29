@@ -119,7 +119,7 @@ export function ProductDisplay(){
                                         const toUpperDescription = product.description.charAt(0).toUpperCase() + product.description.slice(1);
                                         product.name = toUpperName;
                                         product.description = toUpperDescription;
-                                        const avatarUrl = product.image ? `${api.defaults.baseURL}/files/${product.image}` : null;
+                                        const ImageUrl = product.image ? `${api.defaults.baseURL}/files/${product.image}` : null;
 
 
                                         return (
@@ -137,7 +137,7 @@ export function ProductDisplay(){
                                                     </svg>
                                         
                                                 </PenIcon>
-                                                <img src={avatarUrl} alt={product.name} />
+                                                <img src={ImageUrl} alt={product.name} />
                                                 <span className="name-product"> {product.name} <FiChevronRight /> </span>
                                                 <span className="description-product">{product.description}</span>
                                                 <span className="price-product">R${product.prices}</span>

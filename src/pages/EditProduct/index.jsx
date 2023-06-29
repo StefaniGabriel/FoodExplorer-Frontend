@@ -11,28 +11,52 @@ import { ButtonLink } from "../../components/ButtonLink";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-import { useState } from "react";
-import { useProduct } from "../../hooks/product";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { api } from "../../services/api";
 
 
 export function EditProduct(){
-    const [image, setImage] = useState('');
-    
-    const [name, setName] = useState('');
-    const [category, setCategory] = useState('');
-    const [ingredients, setIngredients] = useState('');
-    const [price, setPrice] = useState('');
-    const [description, setDescription] = useState('');
-    const [newIngredient, setNewIngredient] = useState('');
-
-    const { createProduct } = useProduct();
+    const params = useParams();
+  
     const navigate = useNavigate();
 
+    const [image, setImage] = useState('')
+    const [fileImage, setFileImage] = useState('')
+    const [name, setName] = useState('')
+
+    const [category, setCategory] = useState('');
+    const [prices, setPrices] = useState('');
+    const [description, setDescription] = useState('');
+    const [ingredients, setIngredients] = useState([]);
+    const [newIngredient, setNewIngredient] = useState('');
+
+   
+  const loadProduct = () => {
+    api.get(`/product/${params.id}`)
+      .then((response) => {
+        const res = response.data;
+        setImage(res.image);
+        setName(res.name);
+        setCategory(res.category);
+        setPrices(res.prices);
+        setDescription(res.description);
+        setIngredients(res.ingredients.map((ingredient) => {
+            return ingredient.name;
+        }));
+        })
+  };
+  
+  
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
+
+ 
     function handleBack(){
         navigate(-1);
     }
-
 
     function handleSelectImage(event){
         if(!event.target.files){
@@ -42,61 +66,72 @@ export function EditProduct(){
         const selectedImage = event.target.files[0];
         const selectedImagePreview = URL.createObjectURL(selectedImage);
 
-        setImage(selectedImagePreview);
+        setFileImage(selectedImagePreview);
+    
+        setImage(selectedImage);
+
     }
 
-    function handleDeleteImage(){
-        setImage('');
-    }
-    
 
     function handleAddIngredient(){
         if(!newIngredient){
             return;
         }
 
-        setIngredients([...ingredients, newIngredient]);
+        setIngredients([...ingredients,newIngredient]);
+
         setNewIngredient('');
     }
 
     function handleDeleteIngredient(index){
-        const newIngredients = ingredients.filter((ingredient, i) => i !== index);
-
+        const newIngredients = [...ingredients];
+        newIngredients.splice(index, 1);
         setIngredients(newIngredients);
     }
+        
+    function handleDataImage(image){
+        const ImageUrl = image ? `${api.defaults.baseURL}/files/${image}` : null;
+        return ImageUrl;
+    }
 
- 
+
 
     async function handleEditProduct(){
+
+        const listIngredients = ingredients.map((ingredient) => {
+          
+            return ingredient
+        })
+  
+        const data = new FormData();
+
+        data.append('image', image);
+
+        try{
+            await api.put(`/product/${params.id}`, {
+                name,
+                category,
+                prices,
+                description,
+                ingredients: listIngredients
+              
     
+            });
 
-        if(!name || !category || !ingredients || !price || !description || !image){
-            alert('Preencha todos os campos');
-            return;
+            if(fileImage){
+                await api.patch(`/product/image/${params.id}`, data);
+            }
+           
+        } catch(err){
+            alert('Erro ao editar produto, tente novamente.')
         }
-        
-        const correctPrice = price.replace(',', '.');
-
-        if(isNaN(correctPrice)){
-            alert('Insira um valor válido');
-            return;
-        }
-
-        const priceNumber = Number(correctPrice);
-
-        if(priceNumber < 0){
-            alert('Insira um valor válido');
-            return;
-        }
-
       
     }
 
     function handleExcludeProduct(){
-        alert('Produto excluído com sucesso');
-        navigate('/admin');
     }
 
+ 
 
     return(
        <Container>
@@ -117,16 +152,15 @@ export function EditProduct(){
              <div className="input-wrapper">
                 <span className="input-name">Imagem do prato</span>
               {
-                    image ?   <div className="file-02">
+                 fileImage ?  <div className="file-02">
                     <label htmlFor="image">
                         <span>
-                            <img src={image} alt="Imagem do produto" />
-                            <button
-                            onClick={handleDeleteImage}
-                            > 
-                                <FiX />Excluir
-                            </button>
+                            <img src={fileImage} alt={name} />
+                          
                         </span>
+                      
+                             <p>   <FiX />  Selecione imagem para alterá-la</p>
+                      
                     
                         <Input
                         id="image"
@@ -136,14 +170,17 @@ export function EditProduct(){
 
                         />
                     </label>
-                    </div> : <div className="file">
+                    </div> : 
+                    <div className="file-02">
                     <label htmlFor="image">
                         <span>
-                            <FiUpload />
-                            Selecione imagem para alterá-la
-
+                            <img src={handleDataImage(image)} alt={name} />
+                          
                         </span>
-
+                      
+                             <p>   <FiX />  Selecione imagem para alterá-la</p>
+                      
+                    
                         <Input
                         id="image"
                         type="file"
@@ -151,11 +188,12 @@ export function EditProduct(){
                         onChange={handleSelectImage}
 
                         />
-
                     </label>
-                </div>
+                    </div> 
 
-              }
+
+                  
+                } 
 
                 
            
@@ -167,7 +205,9 @@ export function EditProduct(){
             type="text"
             className="input-name-product"
             placeholder="Insira o nome do prato"
+            defaultValue={name}
             onChange={event => setName(event.target.value)}
+          
             />
         </div>
 
@@ -175,7 +215,10 @@ export function EditProduct(){
             <span className="input-name">Categoria do prato</span>
             <div className="input-category-product">
             <Select
+                value={category}
                 onChange={event => setCategory(event.target.value)}
+                
+               
             />
         </div>
             
@@ -191,17 +234,21 @@ export function EditProduct(){
    
 
                     {
-                    ingredients && ingredients.map((ingredient, index) => {
+                       
+                   ingredients && ingredients.map((ingredient, index) => {
+                      
                         return(
                             <NewTag 
                             key={index}
                             value={ingredient}
                             onClick={() => handleDeleteIngredient(index)}
-                            onChange={event => setIngredients(event.target.value)}
-                            
+                           
                             />
                         )
+
+                       
                     }
+                    
                     )
                     }
 
@@ -222,20 +269,24 @@ export function EditProduct(){
                     type="text"
                     className="input-price-product"
                     placeholder="R$ 00,00"
-                    onChange={event => setPrice(event.target.value)}
+                    defaultValue={prices}
+                    onChange={event => setPrices(event.target.value)}
                     />
             </div>
 
      </div>
          
-
-         <div className="input-wrapper">
-                <span className="input-name">Nome do prato</span>
-                <Textarea 
-                placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
-                onChange={event => setDescription(event.target.value)}
-                />
-        </div>
+                        <div className="input-wrapper">
+                        <span className="input-name">Descrição</span>
+                        <Textarea
+                        type="text"
+                        className="input-description-product"
+                        placeholder="Insira uma descrição para o prato"
+                        defaultValue={description}
+                        onChange={event => setDescription(event.target.value)}
+                        />
+                    </div>
+     
 
         <div className="button">
         

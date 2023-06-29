@@ -64,42 +64,6 @@ export const Form = styled.form`
         margin-bottom: ${responsive(24)};
     }
 
-    .file {
-        label{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        border-radius: ${responsive(8)};
-
-        width: 100%;
-        height: ${responsive(48)};
-       
-       
-        background-color: ${({ theme }) => theme.COLORS.GRAY400};
-        
-        input {
-            display: none;
-
-        }
-
-        span {
-            display: flex;
-            align-items: center;
-            gap: ${responsive(8)};
-            font-size: ${responsive(12)};
-            margin: ${responsive(12)};
-            white-space: nowrap;
-
-         
-        }
-
-        svg {
-            font-size: ${responsive(24)};
-        }
-    }}
-
-
     .file-02 {
     
         label{
@@ -127,9 +91,10 @@ export const Form = styled.form`
             height: clamp(2rem, 2rem + 10vw, 4rem);
         }
 
-        button {
+        p {
             display: flex;
             align-items: center;
+            gap: ${responsive(2)};
             justify-content: center;
             
             padding: ${responsive(5)};
@@ -138,6 +103,7 @@ export const Form = styled.form`
             background-color: transparent;
             border:  1px dashed ${({ theme }) => theme.COLORS.GRAY900};
             color: ${({ theme }) => theme.COLORS.GRAY900};
+            font-size: ${responsive(12)};
 
             svg {
                 font-size: ${responsive(16)};
@@ -241,7 +207,8 @@ export const Form = styled.form`
         }
         
         .button {
-        text-align: end;
+            justify-content: flex-end;
+
         > button {
             width: 25%;
         }

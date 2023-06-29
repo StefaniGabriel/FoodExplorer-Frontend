@@ -12,7 +12,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
 import { useState } from "react";
-import { useProduct } from "../../hooks/product";
+
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 

@@ -34,7 +34,7 @@ export const Container = styled.div`
    .details-container {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
 
     .image-container {
         img{
@@ -61,7 +61,7 @@ export const Container = styled.div`
         }
 
         p {
-            font-size: clamp(1rem, 1rem + 1vw, 1.6rem);
+            font-size: ${responsive(12)};
             font-family:  'Poppins', sans-serif;
             line-height: 140%;
         }
@@ -70,8 +70,9 @@ export const Container = styled.div`
 
    .details-tags {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(3, 1fr);    
+        
         gap: ${responsive(24)};
 
         width: fit-content;
@@ -83,6 +84,11 @@ export const Container = styled.div`
    .button {
     margin-top: ${responsive(48)};
    }
+
+}
+
+
+@media (min-width: 768px) {
 
 }
 
