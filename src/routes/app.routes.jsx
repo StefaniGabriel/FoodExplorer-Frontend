@@ -11,8 +11,12 @@ export function AppRoutes() {
 
     return (
         <Routes>
-            <Route path="/admin/*" element={<AdminRoutes />} />
-            <Route path="/*" element={<ClientRoutes />} />
+            {
+                isAdmin && <Route path="/admin/*" element={<AdminRoutes />} />
+
+            }
+           
+            <Route path="/client/*" element={<ClientRoutes />} />
 
         </Routes>
     );

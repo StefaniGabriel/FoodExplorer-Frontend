@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { FiChevronRight } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import { Container, PenIcon, Product} from "./styles";
 import { Section } from "../Section";
@@ -42,20 +42,38 @@ export function ProductDisplay(){
         return categoryCounts[category] > 3;
       };
 
-
-
-    const handleLeftClick = (e) => {
-        e.preventDefault();
-      
-       carouselRef.current.scrollLeft -= carouselRef.current.offsetWidth;
-       
-    }
     
-    const handleRightClick = (e) => {
-        e.preventDefault();
-       
-        carouselRef.current.scrollLeft += carouselRef.current.offsetWidth;
+    function handleNextClick(category) {
+        const prod = categoryFilter.filter((product) => product.category === category);
+        const prodLength = prod.length;
+        const carouselWidth = carouselRef.current.offsetWidth;
+        const scrollWidth = carouselRef.current.scrollWidth;
+        const scrollLeft = carouselRef.current.scrollLeft;
+        const maxScroll = scrollWidth - carouselWidth;
+        const itemWidth = scrollWidth / prodLength;
+        const nextItem = Math.round((scrollLeft + itemWidth) / itemWidth) * itemWidth;
         
+        if (scrollLeft < maxScroll) {
+            carouselRef.current.scrollLeft = nextItem;
+        }
+
+
+
+    }
+
+    function handlePrevClick(category) {
+        const prod = categoryFilter.filter((product) => product.category === category);
+        const prodLength = prod.length;
+        const carouselWidth = carouselRef.current.offsetWidth;
+        const scrollLeft = carouselRef.current.scrollLeft;
+        const itemWidth = scrollLeft / prodLength;
+        const prevItem = Math.round((scrollLeft - itemWidth) / itemWidth) * itemWidth;
+
+        if (scrollLeft > 0) {
+            carouselRef.current.scrollLeft = prevItem;
+        }
+
+
     }
 
     function GoDetails(product){
@@ -104,14 +122,24 @@ export function ProductDisplay(){
                         <Section title={toUpperCategory} />
                         <div className="carousel-product"  ref={carouselRef}>
 
-                        <div className={`buttonLeft ${showButton(category) ? '' : 'hidden'}`}>
-                          <button>
-                            <FiChevronRight onClick={handleRightClick} />
-                          </button>
+                        <div
+                        className="carousel-buttons"
+                        >
+                            <div className={`carousel-prev ${showButton(category) ? '' : 'hidden'}`}>
+                                <button
+                                 onClick={() => handleNextClick(category)}
+                                
+                                > <FiChevronRight /> </button>
                             </div>
-                     
-                       
+                            <div className={`carousel-next ${showButton(category) ? '' : 'hidden'}`}>
+                                <button
+                                onClick={() => handlePrevClick(category)}
+                                > <FiChevronLeft /> </button>
+                            </div>
+                           
 
+                        </div>
+                
                             {
                                 categoryFilter.map((product, index) => {
                                     if(product.category === category){
@@ -138,7 +166,11 @@ export function ProductDisplay(){
                                         
                                                 </PenIcon>
                                                 <img src={ImageUrl} alt={product.name} />
-                                                <span className="name-product"> {product.name} <FiChevronRight /> </span>
+                                                <div className="name-container" >
+                                                    <span className="name-product"> {product.name} </span>
+                                                    <FiChevronRight /> 
+                                                            </div>
+                                              
                                                 <span className="description-product">{product.description}</span>
                                                 <span className="price-product">R${product.prices}</span>
                                                
@@ -152,11 +184,7 @@ export function ProductDisplay(){
                             }
                             z
 
-                        <div className={`buttonRight ${showButton(category) ? '' : 'hidden'}`}>
-                            <button>
-                            <FiChevronRight onClick={handleLeftClick} />
-                            </button>
-                        </div>
+                 
                             
                         </div>
                         </Product>

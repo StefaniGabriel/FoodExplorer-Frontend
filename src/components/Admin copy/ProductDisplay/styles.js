@@ -33,6 +33,7 @@ export const Container = styled.div`
     }
 
 
+
     .preview-product {
        
         display: flex;
@@ -48,6 +49,7 @@ export const Container = styled.div`
         border: 0.1rem solid ${({ theme }) => theme.COLORS.BACKGROUND_BLACK800};
         border-radius: 0.8rem;  
         flex: none;
+        flex-shrink: 0;
 
     }
 
@@ -96,7 +98,6 @@ export const Container = styled.div`
         }
       
         .preview-product {
-        position: relative;
         height: ${responsive(350)};
         width: ${responsive(230)};
         gap: ${responsive(15)};
@@ -117,40 +118,62 @@ export const Container = styled.div`
             -webkit-box-orient: vertical;
         }
 
+        .name-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            
+            svg{
+                color: ${({ theme }) => theme.COLORS.WHITE700};
+                font-size: 1.4rem;
+                margin-top: 0.3rem;
+            }
+        }
+
+
         .name-product {
             font-size: clamp(0.8rem, 2vw, 1.6rem);
             font-weight: 700;
 
-            svg{
-                font-size: 0.8rem;
-                
-            }
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+
         }
 
         .price-product {
             font-size: clamp(1rem, 2vw, 1.6rem);
             
         }
+
+        .carousel-buttons {
+        position: relative;
+        
+        }
     
-        .buttonRight {
+        .carousel-next,
+        .carousel-prev {
             position: absolute;
+            top: 0;
+            bottom: 0;
+            right: auto;
+            left: 0;
             z-index: 1;
 
-            background: linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
-            transform: matrix(-1, 0, 0, 1, 0, 0);
-            
+            background: linear-gradient(to left, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
             display: flex;
-          
-            width: 19rem;
-            height: 26rem;;
+
+            width: ${responsive(300)};
 
             button {
+                position: absolute;
                 background-color: transparent;
                 border: none;
                 align-self: center;
-                    
-                margin-left: ${responsive(200)};
-
+            
                 &:hover {
                     opacity: 0.5;
                 }
@@ -160,46 +183,27 @@ export const Container = styled.div`
                 z-index: 2;
                 color: ${({ theme }) => theme.COLORS.WHITE900};
                 font-size: 3.5rem;
-
             }
          
         }
 
-        .buttonLeft {
+        .carousel-prev  {
             position: absolute;
-
-            z-index: 1;
-
-            background: linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
-            
-            display: flex;
-            margin-left: ${responsive(760)};
+            left: 870px;
            
-            width: 19rem;
-            height: 26rem;;
+            background: linear-gradient(to right, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
             
-            button {
-                background-color: transparent;
-                border: none;
-                align-self: center;
-                margin-left: ${responsive(130)};
-              
-
-                &:hover {
-                    opacity: 0.5;
-                }
+            svg {
+                margin-left: ${responsive(120)};
             }
-
-            svg{
-                z-index: 2;
-               
-                color: ${({ theme }) => theme.COLORS.WHITE900};
-                font-size: 3.5rem;
-
-            }
-
-         
         }}
+
+        .carousel-next{
+            svg{
+                margin-left: ${responsive(20)};
+            }
+
+        }
 
         .hidden {
             display: none;

@@ -1,19 +1,19 @@
 import { FiSearch } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import { Input } from "../../components/Input";
-import { Container, Content} from "./styles";
-import { ButtonLink } from "../../components/ButtonLink";
+import { Input } from "../../../components/Input";
+import { Container, Content, ProductSearch} from "./styles";
+import { ButtonLink } from "../../../components/ButtonLink";
+import { Button } from "../../../components/Button";
 
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-import { useAuth } from '../../hooks/auth';
-import { Header } from '../../components/Header';
+import { useAuth } from '../../../hooks/auth';
+
 import { useEffect } from 'react';
-import { api } from '../../services/api';
-import { ProductDisplay } from '../../components/ProductDisplay';
-import { ProductItems } from '../../components/ProductItems';
+import { api } from '../../../services/api';
+import { FaChevronRight } from 'react-icons/fa';
 
 
 export function Menu(){
@@ -52,11 +52,21 @@ export function Menu(){
         navigate('/admin');
     }
 
+    function goAddProduct(){
+        navigate('/admin/new');
+    }
+
     
     function handleLogout(){
         signOut();
         navigate("/");
     }
+
+    function handleNavigateToProduct(id){
+        navigate(`/admin/details/${id}`);
+    }
+
+   
 
 
     useEffect(() => {
@@ -95,25 +105,42 @@ export function Menu(){
             icon={FiSearch}
             onChange={(e) => setSearch(e.target.value)}
             />
-
-            <ButtonLink onClick={handleLogout} title="Sair" />
+     <      div className="buttonAddNewProduct">
+                <Button title="Adicionar novo produto"
+                onClick={goAddProduct} />
+            </div>
+        
+            <ButtonLink
+            className="button-logout"
+            onClick={handleLogout} title="Sair" />
 
             <div className='border'></div>
 
                     
           </Content>
 
+         
+
+
           <div className='search-result'>
             { 
             productFilter.map((product) => {
+                const ImageUrl = product.image ? `${api.defaults.baseURL}/files/${product.image}` : null;
+                const { id, name} = product;
+
                 return (
-                    <ProductItems
-                    name={product.name}
-                    description={product.description}
-                    price={product.price}
-                    image={product.image}
-                    />
-                   
+                <ProductSearch>
+                        <div className="preview-product" key={id}>
+        
+                            <div className="product-title">
+                            <img src={ImageUrl} />
+                            <span className="name-product">{name}</span>
+                            </div>
+                            <FaChevronRight 
+                            onClick={() => handleNavigateToProduct(id)}
+                            className="icon" />
+                    </div>
+                                    </ProductSearch>
                     
                 )
             })

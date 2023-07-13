@@ -1,9 +1,9 @@
 import { Routes, Route} from "react-router-dom";
-import { Home } from "../pages/Home";
-import { NewProduct } from "../pages/NewProduct";
-import { Details } from "../pages/Details";
-import { Menu } from "../pages/Menu";
-import { EditProduct } from "../pages/EditProduct";
+import { Home } from "../pages/Adimin/Home";
+import { NewProduct } from "../pages/Adimin/NewProduct";
+import { Details } from "../pages/Adimin/Details";
+import { Menu } from "../pages/Adimin/Menu";
+import { EditProduct } from "../pages/Adimin/EditProduct";
 
 
 

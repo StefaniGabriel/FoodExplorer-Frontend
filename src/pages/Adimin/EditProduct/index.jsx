@@ -2,18 +2,18 @@ import { Container, Form } from "./styles";
 
 import { FiChevronLeft, FiUpload, FiX } from 'react-icons/fi';
 
-import { Input } from "../../components/Input";
-import { Select } from "../../components/Select";
-import { NewTag } from "../../components/NewTag";
-import { Textarea } from "../../components/Textarea";
-import { Button } from "../../components/Button";
-import { ButtonLink } from "../../components/ButtonLink";
-import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer";
+import { Input } from "../../../components/Input";
+import { Select } from "../../../components/Select";
+import { NewTag } from "../../../components/NewTag";
+import { Textarea } from "../../../components/Textarea";
+import { Button } from "../../../components/Button";
+import { ButtonLink } from "../../../components/ButtonLink";
+import { Header } from "../../../components/Header";
+import { Footer } from "../../../components/Footer";
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { api } from "../../services/api";
+import { api } from "../../../services/api";
 
 
 export function EditProduct(){

@@ -4,6 +4,8 @@ import { FiLogOut} from 'react-icons/fi';
 import { Button } from "../Button";
 
 
+import logo from "../../assets/logo/logo.svg"
+
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
@@ -16,7 +18,7 @@ export function Header({ children }){
     }
 
     function goMenu(){
-        navigate("/menu");
+        navigate("/admin/menu");
     }
 
 
@@ -24,6 +26,9 @@ export function Header({ children }){
         signOut();
         navigate("/");
     }
+
+    
+  
 
 
 
@@ -33,7 +38,7 @@ export function Header({ children }){
             <FaBars className="FaBars" onClick={goMenu} />
     
             <div className="logo" >
-            <img src="../src/assets/Polygon 1.png" />
+            <img src={logo} />
 
             <div className="logo-text">
             <h1>food explorer</h1>

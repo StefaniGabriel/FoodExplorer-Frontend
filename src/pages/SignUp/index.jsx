@@ -3,29 +3,70 @@ import { Container, Form } from "./styles";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonLink } from "../../components/ButtonLink";
+import { useAuth } from "../../hooks/auth";
+
+import logo from "../../assets/logo/logo.svg"
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import { api } from "../../services/api"
+
 export function SignUp(){
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("")
+   const [password, setPassword] = useState("");
 
-   console.log(email)
+   const { signIn } = useAuth();
+
    const navigate = useNavigate();
 
-   function handleSignUp(){
+   function handleErrorSignUp(){
       if(!name || !email || !password){
          alert("Preencha todos os campos")
       }
 
-      if(password ==! isNaN){
-         alert("Preencha todos os campos")
+      if((email.search("@")==-1)){
+         return alert("E-mail informado inválido!")
       }
-      
+
+      if(password ==! isNaN){
+         alert("Somente Números!")
+      }
+
+      if(password.length < 6){
+         alert("Senha deve ter 6 caracteres!")
+      }
+
 
       
+   }
+
+   function handleSignUp(){
+      handleErrorSignUp();
+
+      api.post("/users", { 
+         name,
+         email,
+         password,
+         type: "client"
+      })
+      .then(() => {
+          alert("Usuário cadrastrado com sucesso!");
+          
+         signIn({ email, password });
+     
+
+      })
+      .catch(error => {
+          if(error.response){
+              alert(error.response.data.message);
+             
+              alert("Não foi possível cadastrar");
+          }
+      });
+
+   
    }
 
    function handleBack(){
@@ -35,8 +76,10 @@ export function SignUp(){
  return(
     <Container>
       <div className="title" >
-         <img src="../../assets/Polygon 1.svg" />
-         <h1>food explorer</h1>
+         <img src={logo} 
+         className="logo"
+         />
+         <h2>food explorer</h2>
       </div>
 
       <Form>
@@ -46,7 +89,7 @@ export function SignUp(){
       <section>
          <span>Nome</span>
          <Input
-            placeholder="Exemplo: exemplo@exemplo.com.br"
+            placeholder="Nome completo"
             type="text"
             onChange={e => setName(e.target.value)}
             />
@@ -56,7 +99,7 @@ export function SignUp(){
       <section>
          <span>Email</span>
          <Input
-            placeholder="Exemplo: exemplo@exemplo.com.br"
+            placeholder="nome@exemplo.com.br"
             type="text"
             onChange={e => setEmail(e.target.value)}
             />
@@ -65,7 +108,7 @@ export function SignUp(){
       <section>
          <span>Senha</span>
          <Input
-            placeholder="Exemplo: exemplo@exemplo.com.br"
+            placeholder="Somente 6 caracteres númericos"
             type="password"
             maxLength={6}
             onChange={e => setPassword(e.target.value)}

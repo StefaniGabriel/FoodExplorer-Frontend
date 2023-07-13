@@ -4,6 +4,8 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonLink } from "../../components/ButtonLink";
 
+import logo from "../../assets/logo/logo.svg";
+
 import { useAuth } from "../../hooks/auth";
 
 import { useNavigate } from "react-router-dom";
@@ -38,8 +40,9 @@ export function SingIn(){
       validateLogin();
 
       try {
-         await validateLogin();
+        
          await signIn({ email, password });
+
          navigate("/admin");
      
        } catch (error) {
@@ -51,7 +54,7 @@ export function SingIn(){
  return(
     <Container>
       <div className="title" >
-         <img src="../src/assets/Polygon 1.png" />
+         <img src={logo} />
          <h1>food explorer</h1>
       </div>
 

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import responsive from "../../styles/responsive";
-import image from "../../assets/pngegg_2-removebg-preview.png";
+import responsive from "../../../styles/responsive";
+import image from "../../../assets/frutas.png";
 
 export const Container = styled.div`
     display: flex;

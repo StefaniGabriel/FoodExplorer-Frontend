@@ -2,23 +2,24 @@ import { Container, Form } from "./styles";
 
 import { FiChevronLeft, FiUpload, FiX } from 'react-icons/fi';
 
-import { Input } from "../../components/Input";
-import { Select } from "../../components/Select";
-import { NewTag } from "../../components/NewTag";
-import { Textarea } from "../../components/Textarea";
-import { Button } from "../../components/Button";
-import { ButtonLink } from "../../components/ButtonLink";
-import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer";
+import { Input } from "../../../components/Input";
+import { Select } from "../../../components/Select";
+import { NewTag } from "../../../components/NewTag";
+import { Textarea } from "../../../components/Textarea";
+import { Button } from "../../../components/Button";
+import { ButtonLink } from "../../../components/ButtonLink";
+import { Header } from "../../../components/Header";
+import { Footer } from "../../../components/Footer";
 
 import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { api } from "../../services/api";
+import { api } from "../../../services/api";
 
 
 export function NewProduct(){
     const [image, setImage] = useState('');
+    const [fileImage, setFileImage] = useState('');
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
@@ -26,6 +27,11 @@ export function NewProduct(){
     const [ingredients, setIngredients] = useState([]);
     const [newIngredient, setNewIngredient] = useState('');
 
+    const navigate = useNavigate();
+
+    function handleGoBack(){
+        navigate(-1);
+    }
 
 
     function handleSelectImage(event){
@@ -37,7 +43,8 @@ export function NewProduct(){
      
         const selectedImagePreview = URL.createObjectURL(selectedImage);
 
-        setImage(selectedImagePreview);
+        setImage(selectedImage);
+        setFileImage(selectedImagePreview);
 
     }
 
@@ -87,26 +94,41 @@ export function NewProduct(){
     async function handleCreateProduct(){
 
         handleErrorCreateProduct();
-
-     
-        const response = await api.post('/product', {
-            name,
-            category,
-            description,
-            ingredients,
-            prices: Number(price.replace(',', '.')),
-        });
     
 
-        const { id: productId } = response.data;
         
+        const data = new FormData();
 
-        if (image) {
-           const fileImage = new FormData();
-           fileImage.append("image", image);
-  
-           await api.patch(`product/image/${productId}`, fileImage);
+        data.append('image', image);
+
+        try{
+            const response = await api.post("/product", {
+                name,
+                category,
+                prices: price,
+                description,
+                ingredients
+
+            });
+
+        console.log(response.data);
+
+            
+            const { id } = response.data;
+
+            console.log(id);
+
+            if(fileImage){
+                await api.patch(`/product/image/${id}`, data);
+            }
+
+            alert('Produto cadastrado com sucesso!');
+            navigate(`/admin/details/${id}`);
+           
+        } catch(err){
+            alert('Erro ao cadrastrar produto, tente novamente.')
         }
+        
 
     }
 
@@ -121,9 +143,14 @@ export function NewProduct(){
         <Header />
         <main>
             
-        <div className="back">
-        <FiChevronLeft size={20} />
-        <ButtonLink title="Voltar" />                   
+        <div className="back"
+        >
+        <FiChevronLeft size={20}
+          onClick={handleGoBack} 
+        />
+        <ButtonLink title="Voltar" 
+        onClick={handleGoBack} 
+        />                   
         </div>
          
        <Form>
@@ -137,7 +164,7 @@ export function NewProduct(){
                     image ?   <div className="file-02">
                     <label htmlFor="image">
                         <span>
-                            <img src={image} alt="Imagem do produto" />
+                            <img src={fileImage} alt="Imagem do produto" />
                             <button
                             onClick={handleDeleteImage}
                             > 

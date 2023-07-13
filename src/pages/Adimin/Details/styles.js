@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import responsive from "../../styles/responsive";
+import responsive from "../../../styles/responsive";
 
 export const Container = styled.div`
     display: flex;
@@ -55,14 +55,16 @@ export const Container = styled.div`
 
         color: ${({ theme }) => theme.COLORS.WHITE700};
 
-        h2 {
+        .name-product {
             font-size: clamp(1.5rem, 1.5rem + 1vw, 2.7rem);
             font-weight: 500;
         }
 
-        p {
-            font-size: ${responsive(12)};
+        .description-product {
             font-family:  'Poppins', sans-serif;
+            font-size: clamp(0.8rem, 0.8rem + 1vw, 2rem);
+            font-style: normal;
+            font-weight: 500;
             line-height: 140%;
         }
 
@@ -77,7 +79,7 @@ export const Container = styled.div`
 
         width: fit-content;
 
-        margin:  ${responsive(25)};
+        margin: ${responsive(20)};
 
    }
 
@@ -89,6 +91,71 @@ export const Container = styled.div`
 
 
 @media (min-width: 768px) {
+  
+
+    main {
+       padding: 0 ${responsive(122)};
+    }
+
+    .details-container {
+       
+        align-items: flex-start;
+
+        flex-direction: row;
+        gap: ${responsive(58)};
+       
+
+        .image-container{
+            img{
+                border-radius: 50%;
+                width: clamp(15rem , 15rem + 10vw, 30rem);
+                height: clamp(15rem , 15rem + 10vw, 30rem);
+            }
+        }
+    }
+
+    .row{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        
+    }
+
+ 
+
+    .details-tags {
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(6, 1fr);
+
+        width: fit-content;
+
+        
+
+    }
+
+    .name-product {
+            align-self: self-start;
+            white-space: nowrap;
+
+        }
+        
+      
+    .description-product {
+
+        align-self: stretch;
+
+    }
+
+    .button {
+        margin: 0 ;
+   }
+
+
+  
+
 
 }
 
