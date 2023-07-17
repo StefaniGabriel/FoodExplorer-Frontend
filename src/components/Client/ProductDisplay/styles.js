@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import responsive from "../../styles/responsive";
+import responsive from "../../../styles/responsive";
 
 
 export const Container = styled.div`
@@ -32,26 +32,53 @@ export const Container = styled.div`
         display: none;
     }
 
-
-
     .preview-product {
        
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: ${responsive(12)};
+        gap: ${responsive(8)};
 
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BLACK900};
         width: ${responsive(180)};
-        height: ${responsive(220)};
+        height: ${responsive(260)};
 
         border: 0.1rem solid ${({ theme }) => theme.COLORS.BACKGROUND_BLACK800};
         border-radius: 0.8rem;  
         flex: none;
         flex-shrink: 0;
+        padding: 0 ${responsive(24)} ${responsive(24)} ${responsive(24)};
 
     }
+
+    .icons-container {
+          margin-top: 16px;
+          align-self: self-end;
+          
+
+            svg {
+                font-size: clamp(1.2rem, 2vw, 1.6rem);
+                color: ${({ theme }) => theme.COLORS.WHITE700};
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        .name-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            
+            svg{
+                color: ${({ theme }) => theme.COLORS.WHITE700};
+                font-size: clampq(1.2rem, 2vw, 1.6rem);
+                margin-top: 0.3rem;
+            }
+        }
+
 
     .name-product{
         display: flex;
@@ -59,11 +86,20 @@ export const Container = styled.div`
         font-size: clamp(1rem, 2vw, 1.4rem);
         color: ${({ theme }) => theme.COLORS.WHITE700};
 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+
+
     }
   
     .price-product {
-        font-family: Poppins , sans-serif;
-        font-size: ${responsive(16)};
+       
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        font-weight: 400;
+        
         color: ${({ theme }) => theme.COLORS.BLUE600};
     }
 
@@ -72,21 +108,47 @@ export const Container = styled.div`
     }
 
     img {
-        margin-left: ${responsive(10)};
         width: clamp(4.4rem, 10vw, 8.8rem);
         height: clamp(4.4rem, 10vw, 8.8rem);
         border-radius: 50%;
         object-fit: cover;
     }
 
-    .buttonRight {
-            display: none;
+    .select-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: ${responsive(10)};
+
+   
+
+        .select {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: ${responsive(10)};
         }
 
-    .buttonLeft {
-            display: none;
+        #select-value{
+            color: ${({ theme }) => theme.COLORS.WHITE900};
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 400;
         }
 
+        #add-button{
+            height: ${responsive(40)};
+        }
+
+        svg {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+        }
+
+       
+    }
+
+    .carousel-buttons {
+        display: none;
+    }
    
 
     @media (min-width: 700px) {
@@ -100,11 +162,17 @@ export const Container = styled.div`
         .preview-product {
         height: ${responsive(350)};
         width: ${responsive(230)};
-        gap: ${responsive(15)};
+        gap: ${responsive(10)};
 
-        padding: ${responsive(20)};
+        padding: 0 ${responsive(20)};
+
 
         }
+
+        .select-container{
+            flex-direction: row;
+        }
+
 
         .description-product{
             display: block;
@@ -114,23 +182,11 @@ export const Container = styled.div`
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp:2;
             -webkit-box-orient: vertical;
         }
 
-        .name-container{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            
-            svg{
-                color: ${({ theme }) => theme.COLORS.WHITE700};
-                font-size: 1.4rem;
-                margin-top: 0.3rem;
-            }
-        }
-
+    
 
         .name-product {
             font-size: clamp(0.8rem, 2vw, 1.6rem);
@@ -153,6 +209,8 @@ export const Container = styled.div`
         position: relative;
         
         }
+
+        
     
         .carousel-next,
         .carousel-prev {
@@ -209,28 +267,10 @@ export const Container = styled.div`
             display: none;
             }
 
-   
-
+      
 
 `;
 
 export const Product = styled.div``;
 
-export const PenIcon = styled.span`
-    position: relative;
-    margin-top: ${responsive(16)};
-    margin-left: ${responsive(130)};
 
-    svg {
-        width: clamp(1.2rem, 2vw, 2.4rem);
-        height: clamp(1.2rem, 2vw, 2.4rem);
-        color: ${({ theme }) => theme.COLORS.WHITE700};
-        margin-right: ${responsive(10)};
-    }
-
-
-    @media (min-width: 700px) {
-        margin-left: ${responsive(170)};
-    }
-
-`;

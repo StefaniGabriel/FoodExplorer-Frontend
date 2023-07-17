@@ -2,9 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import { Container, PenIcon, Product} from "./styles";
-import { Section } from "../Section";
+import { Section } from "../../Section";
 
-import { api } from "../../services/api";
+import { api } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
 
 

@@ -2,15 +2,15 @@ import { Container } from "./styles";
 
 import {  FiChevronLeft } from 'react-icons/fi';
 
-import { ButtonLink } from "../../components/ButtonLink";
-import { Tag } from "../../components/Tag";
-import { Button } from "../../components/Button";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+import { ButtonLink } from "../../../components/ButtonLink";
+import { Tag } from "../../../components/Tag";
+import { Button } from "../../../components/Button";
+import { Footer } from "../../../components/Footer";
+import { Header } from "../../../components/Client/Header";
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { api } from "../../services/api";
+import { api } from "../../../services/api";
 
 
 

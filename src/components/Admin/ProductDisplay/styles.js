@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import responsive from "../../styles/responsive";
+import responsive from "../../../styles/responsive";
 
 
 export const Container = styled.div`
@@ -79,15 +79,9 @@ export const Container = styled.div`
         object-fit: cover;
     }
 
-    .buttonRight {
-            display: none;
-        }
-
-    .buttonLeft {
-            display: none;
-        }
-
-   
+   .carousel-buttons {
+    display: none;
+   }
 
     @media (min-width: 700px) {
         .carousel-product {

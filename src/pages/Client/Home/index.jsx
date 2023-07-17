@@ -1,9 +1,9 @@
 import { Container, Image } from "./styles";
-import { Header } from "../../../components/Header";
+import { Header } from "../../../components/Client/Header";
 
 import { FiSearch} from 'react-icons/fi';
 
-import { ProductDisplay } from "../../../components/ProductDisplay"
+import { ProductDisplay } from "../../../components/Client/ProductDisplay"
 import { ButtonLink } from "../../../components/ButtonLink";
 
 import { Footer } from "../../../components/Footer"
@@ -26,9 +26,6 @@ export function Home(){
             navigate('/');
         }
 
-        if(user){
-            
-        }
 
         console.log(user);
 

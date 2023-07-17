@@ -6,7 +6,7 @@ import { ButtonLink } from "../../../components/ButtonLink"
 import { Tag } from "../../../components/Tag";
 import { Button } from "../../../components/Button";
 import { Footer } from "../../../components/Footer";
-import { Header } from "../../../components/Header";
+import { Header } from "../../../components/Admin/Header";
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";

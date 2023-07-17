@@ -1,5 +1,5 @@
 import { Container, Image } from "./styles";
-import { Header } from "../../../components/Header";
+import { Header } from "../../../components/Admin/Header";
 
 import { FiSearch} from 'react-icons/fi';
 

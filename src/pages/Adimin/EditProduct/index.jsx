@@ -8,7 +8,7 @@ import { NewTag } from "../../../components/NewTag";
 import { Textarea } from "../../../components/Textarea";
 import { Button } from "../../../components/Button";
 import { ButtonLink } from "../../../components/ButtonLink";
-import { Header } from "../../../components/Header";
+import { Header } from "../../../components/Admin/Header";
 import { Footer } from "../../../components/Footer";
 
 import { useEffect, useState } from "react";

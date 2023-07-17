@@ -1,18 +1,18 @@
 import { FiSearch } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import { Input } from "../../components/Input";
+import { Input } from "../../../components/Input";
 import { Container, Content, ProductSearch} from "./styles";
-import { ButtonLink } from "../../components/ButtonLink";
-import { Button } from "../../components/Button";
+import { ButtonLink } from "../../../components/ButtonLink";
+import { Button } from "../../../components/Button";
 
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-import { useAuth } from '../../hooks/auth';
+import { useAuth } from '../../../hooks/auth';
 
 import { useEffect } from 'react';
-import { api } from '../../services/api';
+import { api } from '../../../services/api';
 import { FaChevronRight } from 'react-icons/fa';
 
 
@@ -49,11 +49,7 @@ export function Menu(){
     });
 
     function goHome(){
-        navigate('/admin');
-    }
-
-    function goAddProduct(){
-        navigate('/admin/new');
+        navigate(-1);
     }
 
     
@@ -105,10 +101,7 @@ export function Menu(){
             icon={FiSearch}
             onChange={(e) => setSearch(e.target.value)}
             />
-     <      div className="buttonAddNewProduct">
-                <Button title="Adicionar novo produto"
-                onClick={goAddProduct} />
-            </div>
+  
         
             <ButtonLink
             className="button-logout"
