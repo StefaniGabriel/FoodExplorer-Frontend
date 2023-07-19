@@ -44,7 +44,7 @@ export function Menu(){
 
         }else if(String(ingredients.name).toLowerCase().includes(search.toLowerCase())){
             return product;
-        }
+        };
 
     });
 
@@ -67,7 +67,7 @@ export function Menu(){
 
     useEffect(() => {
         async function fetchProduct(){
-            const response = await api.get(`/product?title=${search}?ingredients=${search}`);
+            const response = await api.get(`/product`);
            
             setProduct(response.data);
             

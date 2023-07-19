@@ -8,6 +8,7 @@ import { useAuth } from "../hooks/auth";
 export function AppRoutes() {
     const { user } = useAuth();
     const isAdmin = user && user.type === "admin"; 
+    const isClient = user && user.type === "client";
 
     return (
         <Routes>
@@ -16,7 +17,10 @@ export function AppRoutes() {
 
             }
            
-            <Route path="/client/*" element={<ClientRoutes />} />
+           {
+                isClient && <Route path="/client/*" element={<ClientRoutes />} />
+           }
+            
 
         </Routes>
     );

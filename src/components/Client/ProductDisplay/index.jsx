@@ -15,6 +15,7 @@ import { SelectOrder } from "../SelectOrder";
 export function ProductDisplay({search}){
     const [data, setData] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
+
     
     const carouselRef = useRef(null);
 
@@ -25,10 +26,27 @@ export function ProductDisplay({search}){
 
 
     const categoryFilter = data.filter((product) => {
+        const { name, ingredients} = product;
+        String.prototype.includes = function(search, start) {
+            if (typeof start !== 'number') {
+                start = 0;
+            }
 
-        if(selectedCategory === ''){
+            if (start + search.length > this.length) {
+                return false;
+            } else {
+                return this.indexOf(search, start) !== -1;
+            }
+        };
+
+          
+        if(search === ""){
             return product;
-        }else if(product.category === selectedCategory){
+        }else if(String(name).toLowerCase().includes(search.toLowerCase())){
+            return product;
+
+        }else if(String(ingredients.name).toLowerCase().includes(search.toLowerCase())){
+            return product;
         }
 
         
@@ -84,16 +102,14 @@ export function ProductDisplay({search}){
 
     useEffect(() => {
         async function fetchProduct(){
-            const response = await api.get(`/product?name=${search}?ingredients=${search}`);
+            const response = await api.get(`/product?search=${search}`);
            
             setData(response.data);
             
         }
-       
-        console.log(data);
         fetchProduct();
      
-    },[search]);
+    },[]);
 
 
 
@@ -122,7 +138,7 @@ export function ProductDisplay({search}){
                         <div className="carousel-product"  ref={carouselRef}>
 
                         <div
-                        className="carousel-buttons"
+                        className={`carousel-buttons ${showButton(category) ? '' : 'hidden'}`}
                         >
                             <div className={`carousel-prev ${showButton(category) ? '' : 'hidden'}`}>
                                 <button
@@ -147,7 +163,8 @@ export function ProductDisplay({search}){
                                         product.name = toUpperName;
                                         product.description = toUpperDescription;
                                         const ImageUrl = product.image ? `${api.defaults.baseURL}/files/${product.image}` : null;
-
+                                       
+                                          
 
                                         return (
                                             <div className="preview-product" 

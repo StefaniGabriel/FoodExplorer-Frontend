@@ -22,7 +22,7 @@ export function SingIn(){
 
    function handleGoCreate(){
       navigate("/create");
-   }
+   };
 
    function validateLogin(){
       if(!email || !password){
@@ -31,25 +31,40 @@ export function SingIn(){
        if((email.search("@")==-1)){
           return alert("E-mail informado inválido!")
        }
-   }
-
- 
+   };
 
    async function handleSignUp(){
 
       validateLogin();
 
-      try {
-        
-         await signIn({ email, password });
+      try{
+         const response = await signIn({
+            email,
+            password,
+         });
 
-         navigate("/admin");
-     
-       } catch (error) {
-      
-         navigate("/error");
-       }
-   }
+         
+         const userType =response.data.user.type;
+
+
+         if(userType === "client"){
+            navigate("/client");
+         }else if(userType === "admin"){
+            navigate("/admin");
+         }else{
+            navigate("/error");
+         }
+
+
+           
+
+      }catch(error){
+         if(error.response){
+            navigate("/error");
+         }
+      };
+    
+   };
 
  return(
     <Container>
@@ -75,7 +90,7 @@ export function SingIn(){
          <Input
             placeholder="Digite sua senha"
             type="password"
-            maxLength="6"
+            maxLength={6}
             onChange={e => setPassword(e.target.value)}
             />
       </section>

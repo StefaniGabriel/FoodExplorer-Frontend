@@ -129,6 +129,15 @@ export function EditProduct(){
     }
 
     function handleExcludeProduct(){
+        api.delete(`/product/${params.id}`)
+        .then(() => {
+            confirm('Deseja excluir o produto?');
+            alert('Produto excluído com sucesso!');
+            navigate('/admin');
+        })
+        .catch(() => {
+            alert('Erro ao excluir produto, tente novamente.')
+        })
     }
 
  
@@ -139,7 +148,7 @@ export function EditProduct(){
         <main>
             
         <div className="back">
-        <FiChevronLeft size={20} />
+        <FiChevronLeft size={30} />
         <ButtonLink 
         onClick={handleBack}
         title="Voltar" />                   

@@ -145,6 +145,7 @@ export const Container = styled.div`
 
         .carousel-buttons {
         position: relative;
+        display: flex;
         
         }
     

@@ -33,12 +33,6 @@ export function SignUp(){
       if(password ==! isNaN){
          alert("Somente Números!")
       }
-
-      if(password.length < 6){
-         alert("Senha deve ter 6 caracteres!")
-      }
-
-
       
    }
 
@@ -55,7 +49,8 @@ export function SignUp(){
           alert("Usuário cadrastrado com sucesso!");
           
          signIn({ email, password });
-     
+         
+         navigate("/client");
 
       })
       .catch(error => {

@@ -7,8 +7,7 @@ export const Container = styled.div`
   
 
     main {
-        padding: 0 ${responsive(56)};
-        margin-bottom: ${responsive(49)};
+        padding: 0 ${responsive(40)} ${responsive(40)};
     }
 
        
@@ -17,8 +16,8 @@ export const Container = styled.div`
         align-items: center;
 
         margin-top: ${responsive(31)};
-       
         margin-bottom: ${responsive(16)};
+        cursor: pointer;
 
         button {
             font-family: 'Poppins', sans-serif;
@@ -34,7 +33,7 @@ export const Container = styled.div`
    .details-container {
         display: flex;
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
 
     .image-container {
         img{
@@ -63,9 +62,8 @@ export const Container = styled.div`
         .description-product {
             font-family:  'Poppins', sans-serif;
             font-size: clamp(0.8rem, 0.8rem + 1vw, 2rem);
-            font-style: normal;
-            font-weight: 500;
             line-height: 140%;
+            font-weight:400;
         }
 
    }
@@ -119,8 +117,6 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-
-        
     }
 
  
@@ -130,22 +126,20 @@ export const Container = styled.div`
         flex-wrap: wrap;
         grid-template-columns: repeat(6, 1fr);
 
-        width: fit-content;
-
-        
-
+        width: fit-content;  
+        text-align: start;
     }
 
     .name-product {
             align-self: self-start;
             white-space: nowrap;
 
-        }
+     }
         
       
     .description-product {
 
-        align-self: stretch;
+        text-align: left;
 
     }
 

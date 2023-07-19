@@ -58,8 +58,8 @@ export function Details(){
   
     return(
        <Container>
-        <Header
-        />
+        <Header/>
+        
          <main>
             <div className="back">
             <FiChevronLeft size={20} />

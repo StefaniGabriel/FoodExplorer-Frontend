@@ -8,7 +8,7 @@ import { api } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
 
 
-export function ProductDisplay(){
+export function ProductDisplay({search}){
     const [data, setData] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
     const carouselRef = useRef(null);
@@ -18,14 +18,27 @@ export function ProductDisplay(){
    
     const navigate = useNavigate();
 
-   
-
-
     const categoryFilter = data.filter((product) => {
+        const { name, ingredients} = product;
+        String.prototype.includes = function(search, start) {
+            if (typeof start !== 'number') {
+                start = 0;
+            }
 
-        if(selectedCategory === ''){
+            if (start + search.length > this.length) {
+                return false;
+            } else {
+                return this.indexOf(search, start) !== -1;
+            }
+        };
+
+          
+        if(search === ""){
             return product;
-        }else if(product.category === selectedCategory){
+        }else if(String(name).toLowerCase().includes(search.toLowerCase())){
+            return product;
+
+        }else if(String(ingredients.name).toLowerCase().includes(search.toLowerCase())){
             return product;
         }
 
@@ -123,7 +136,7 @@ export function ProductDisplay(){
                         <div className="carousel-product"  ref={carouselRef}>
 
                         <div
-                        className="carousel-buttons"
+                         className={`carousel-buttons ${showButton(category) ? '' : 'hidden'}`}
                         >
                             <div className={`carousel-prev ${showButton(category) ? '' : 'hidden'}`}>
                                 <button

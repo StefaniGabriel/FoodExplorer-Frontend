@@ -112,7 +112,7 @@ export const Container = styled.div`
     @media (min-width: 700px) {
         .carousel-product {
             margin: 0 ${responsive(100)};
-
+            
         }
       
         .preview-product {

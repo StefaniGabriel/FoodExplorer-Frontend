@@ -111,9 +111,6 @@ export function NewProduct(){
 
             });
 
-        console.log(response.data);
-
-            
             const { id } = response.data;
 
             console.log(id);
@@ -145,7 +142,7 @@ export function NewProduct(){
             
         <div className="back"
         >
-        <FiChevronLeft size={20}
+        <FiChevronLeft size={30}
           onClick={handleGoBack} 
         />
         <ButtonLink title="Voltar" 
@@ -212,6 +209,7 @@ export function NewProduct(){
             className="input-name-product"
             placeholder="Insira o nome do prato"
             onChange={event => setName(event.target.value)}
+            maxLength="15"
             />
         </div>
 
@@ -274,10 +272,11 @@ export function NewProduct(){
          
 
          <div className="input-wrapper">
-                <span className="input-name">Nome do prato</span>
+                <span className="input-name">Descrição</span>
                 <Textarea 
                 placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                 onChange={event => setDescription(event.target.value)}
+                maxLength="80"
                 />
         </div>
 

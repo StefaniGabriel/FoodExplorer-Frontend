@@ -39,7 +39,11 @@ export const Container = styled.div`
             
             button {
                 font-size: clamp(1.8rem, 1.8rem + 2vw, 2rem);
+
+              
             }
+
+          
           
         }
 

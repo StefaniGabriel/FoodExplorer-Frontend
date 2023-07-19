@@ -7,6 +7,7 @@ export const Container = styled.div`
     right: 0;
     left: 0;
 
+    
     padding: ${responsive(27)};
  
     margin-top: ${responsive(25)};
@@ -45,12 +46,7 @@ export const Container = styled.div`
     }
 
     @media (min-width: 700px) {
-        position:relative;
-        bottom: 0;
-        right: 0;
-        left: 0;
-
-
+      
         footer {
         justify-content: space-between;
         padding: 0 ${responsive(100)};
