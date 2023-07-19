@@ -1,9 +1,11 @@
 # Food Explorer - Menu Interativo de Restaurante
 
-![Imagem da Aplicação](https://github.com/StefaniGabriel/url--imagem/blob/main/Captura%20de%20Tela%20(62).png)
-
 
 O Food Explorer é um projeto de ponta a ponta que simula um restaurante fictício, oferecendo uma aplicação completa com front-end e back-end. O objetivo é fornecer uma plataforma onde o admin possa gerenciar os pratos, enquanto os usuários podem explorar um menu interativo e descobrir novas delícias culinárias.
+
+
+![Imagem da Aplicação](https://github.com/StefaniGabriel/url--imagem/blob/main/Captura%20de%20Tela%20(62).png)
+
 
 ## Descrição
 
