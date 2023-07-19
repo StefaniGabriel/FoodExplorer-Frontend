@@ -48,7 +48,7 @@ export const Container = styled.div`
         }
 
         p{
-        font-size: clamp(0.7rem, 0.7rem + 5vw, 1.2rem);
+        font-size: clamp(0.7rem, 1vw, 1.2rem);
         color: ${({ theme }) => theme.COLORS.WHITE700};
         margin-bottom: ${responsive(22)};
         }
@@ -83,6 +83,7 @@ export const Container = styled.div`
         }
         p{
             white-space: nowrap;
+            font-size: clamp(0.7rem, 0.7rem + 5vw, 1.2rem);
 
         }
 
