@@ -4,14 +4,12 @@ import responsive from "../../../styles/responsive";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-  
 
     main {
-        padding: 0 ${responsive(56)};
-        margin-bottom: ${responsive(49)};
+        padding: 0 ${responsive(40)} ${responsive(40)};
+       
     }
 
-       
     .back {
         display: flex;
         align-items: center;
@@ -19,6 +17,13 @@ export const Container = styled.div`
         margin-top: ${responsive(31)};
        
         margin-bottom: ${responsive(16)};
+
+        
+        &:hover{
+            opacity: 0.7;
+        }
+
+        cursor: pointer;
 
         button {
             font-family: 'Poppins', sans-serif;
@@ -28,19 +33,20 @@ export const Container = styled.div`
         svg {
             font-size: clamp(1.8rem, 1.8rem + 2vw, 4rem);
             color: ${({ theme }) => theme.COLORS.WHITE700};
-        }
+
+            }
     }
 
    .details-container {
         display: flex;
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
 
     .image-container {
         img{
             border-radius: 50%;
-            width: clamp(13rem , 13rem + 10vw, 26rem);
-            height: clamp(13rem , 13rem + 10vw, 26rem);
+            width: clamp(13rem , 13rem + 10vw, 20rem);
+            height: clamp(13rem , 13rem + 10vw, 20rem);
         }
 
        
@@ -63,8 +69,6 @@ export const Container = styled.div`
         .description-product {
             font-family:  'Poppins', sans-serif;
             font-size: clamp(0.8rem, 0.8rem + 1vw, 2rem);
-            font-style: normal;
-            font-weight: 500;
             line-height: 140%;
         }
 
@@ -79,13 +83,16 @@ export const Container = styled.div`
 
         width: fit-content;
 
-        margin: ${responsive(20)};
+        margin-top: ${responsive(20)};
+        margin-bottom: ${responsive(20)};
 
    }
 
-   .button {
-    margin-top: ${responsive(48)};
-   }
+ .select-order {
+    flex-direction: row;
+ }
+
+   
 
 }
 
@@ -118,21 +125,21 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
+         justify-content: flex-start;
 
         
     }
 
- 
-
+   
     .details-tags {
         display: grid;
         flex-wrap: wrap;
         grid-template-columns: repeat(6, 1fr);
 
         width: fit-content;
-
         
+     
+        text-align: start;
 
     }
 
@@ -140,12 +147,11 @@ export const Container = styled.div`
             align-self: self-start;
             white-space: nowrap;
 
-        }
-        
-      
+    }
+    
     .description-product {
 
-        align-self: stretch;
+       text-align: left;
 
     }
 
@@ -153,13 +159,7 @@ export const Container = styled.div`
         margin: 0 ;
    }
 
-
-  
-
-
 }
-
-   
-    
+ 
 
 `;

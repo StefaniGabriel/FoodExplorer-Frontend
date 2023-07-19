@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import { FiChevronLeft, FiChevronRight, FiPlus, FiMinus, FiHeart } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight, FiPlus, FiMinus} from "react-icons/fi";
+
 
 import { Container, Product} from "./styles";
 import { Section } from "../../Section";
@@ -8,15 +9,13 @@ import { api } from "../../../services/api";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "../../Button";
-import { ButtonLink } from "../../ButtonLink";
+import { Favorite } from "../Favorite";
+import { SelectOrder } from "../SelectOrder";
 
-
-
-
-export function ProductDisplay(){
+export function ProductDisplay({search}){
     const [data, setData] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
+    
     const carouselRef = useRef(null);
 
     const categories = data.map(product => product.category);
@@ -24,15 +23,12 @@ export function ProductDisplay(){
    
     const navigate = useNavigate();
 
-   
-
 
     const categoryFilter = data.filter((product) => {
 
         if(selectedCategory === ''){
             return product;
         }else if(product.category === selectedCategory){
-            return product;
         }
 
         
@@ -70,7 +66,6 @@ export function ProductDisplay(){
     function handlePrevClick(category) {
         const prod = categoryFilter.filter((product) => product.category === category);
         const prodLength = prod.length;
-        const carouselWidth = carouselRef.current.offsetWidth;
         const scrollLeft = carouselRef.current.scrollLeft;
         const itemWidth = scrollLeft / prodLength;
         const prevItem = Math.round((scrollLeft - itemWidth) / itemWidth) * itemWidth;
@@ -86,16 +81,20 @@ export function ProductDisplay(){
         navigate(`/client/details/${product.id}`)
     }
 
+
     useEffect(() => {
         async function fetchProduct(){
-            const response = await api.get(`/product`);
-            
+            const response = await api.get(`/product?name=${search}?ingredients=${search}`);
+           
             setData(response.data);
             
         }
-
+       
+        console.log(data);
         fetchProduct();
-    },[]);
+     
+    },[search]);
+
 
 
 
@@ -152,13 +151,14 @@ export function ProductDisplay(){
 
                                         return (
                                             <div className="preview-product" 
-                                            onClick={() => GoDetails(product)}
                                             key={index}>
-                                                <span className="icons-container">
-                                                    <FiHeart />
-                                                </span>
+                                                <Favorite
+                                                product={product}
+                                                />
                                                 <img src={ImageUrl} alt={product.name} />
-                                                <div className="name-container" >
+                                                <div className="name-container"
+                                                 onClick={() => GoDetails(product)}
+                                                >
                                                     <span className="name-product"> {product.name} </span>
                                                     <FiChevronRight /> 
                                                             </div>
@@ -166,26 +166,11 @@ export function ProductDisplay(){
                                                 <span className="description-product">{product.description}</span>
                                                 <span className="price-product">R${product.prices}</span>
 
-                                                <div className="select-container">
-                                                    <span className="select" >
-                                                        <ButtonLink
-                                                        title={<FiMinus/>} />
-                                                        <p id="select-value">
-                                                            1
-                                                        </p>
-                                                        <ButtonLink
-                                                        title={<FiPlus/>} />
-                                                    </span>
-
-                                                    <Button 
-                                                    id="add-button"
-                                                    title="Incluir"
-                                                    />
-                                                    
-                                                
-
-                                                </div>
+                                                <SelectOrder
+                                                titleButton="Incluir"
+                                                product={product}
                                                
+                                                />
                                             </div>
                                         )
                                     } 
@@ -193,10 +178,7 @@ export function ProductDisplay(){
                                         
                                 }
                                 )
-                            }
-                            z
-
-                 
+                }
                             
                         </div>
                         </Product>

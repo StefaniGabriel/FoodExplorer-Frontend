@@ -18,6 +18,7 @@ export const Container = styled.button`
     svg {
       color:  ${({ theme }) => theme.COLORS.WHITE900};
     }
- 
+    
+    cursor: pointer;
 
 `;

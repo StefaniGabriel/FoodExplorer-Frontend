@@ -3,10 +3,9 @@ import { Header } from "../../../components/Client/Header";
 
 import { FiSearch} from 'react-icons/fi';
 
-import { ProductDisplay } from "../../../components/Client/ProductDisplay"
-import { ButtonLink } from "../../../components/ButtonLink";
+import { ProductDisplay } from "../../../components/Client/ProductDisplay";
 
-import { Footer } from "../../../components/Footer"
+import { Footer } from "../../../components/Footer";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +16,7 @@ export function Home(){
     const navigate = useNavigate();
 
     const [search, setSearch] = useState('');
-
+  
     useEffect(() => {
         const token = localStorage.getItem('@Foodexplorer:token');
         const user = localStorage.getItem('@Foodexplorer:user');
@@ -27,18 +26,15 @@ export function Home(){
         }
 
 
-        console.log(user);
 
     }, []);
 
     
- 
-
-
-
     return(
         <Container>
-            <Header>
+            <Header
+            
+            >
            
             <Input 
             className="search"
@@ -62,6 +58,7 @@ export function Home(){
 
             <ProductDisplay
             search={search}
+           
             />
 
          <Footer/>

@@ -1,33 +1,30 @@
 import { Container } from "./styles";
 
-import {  FiChevronLeft } from 'react-icons/fi';
+import {  FiChevronLeft, FiMinus, FiPlus } from 'react-icons/fi';
+import list from '../../../assets/icon/list.svg';
 
 import { ButtonLink } from "../../../components/ButtonLink";
 import { Tag } from "../../../components/Tag";
-import { Button } from "../../../components/Button";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Client/Header";
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../../services/api";
-
+import { SelectOrder } from "../../../components/Client/SelectOrder";
 
 
 export function Details(){
     const [data, setData] = useState(null);
+
   
     const params = useParams();
 
     const navigate = useNavigate();
 
- 
+   
     function handleBack(){
-        navigate('/admin');
-    }
-
-    function handleEditProduct(){
-        navigate(`/admin/edit/${params.id}`);
+        navigate('/client');
     }
 
     function handleDataImage(image){
@@ -39,6 +36,10 @@ export function Details(){
    function handleUpperCaseFirstLetter(string){
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
+   function handleTitleWithPrice(price){
+        return `pedir R$ ${price}`;
+   }
 
 
     useEffect(() => {
@@ -52,10 +53,13 @@ export function Details(){
     }
     , [params.id]);
 
+   
+
   
     return(
        <Container>
-        <Header/>
+        <Header
+        />
          <main>
             <div className="back">
             <FiChevronLeft size={20} />
@@ -92,12 +96,13 @@ export function Details(){
                         )
                     }
 
-                <div className="button">
-                 <Button 
-                  title="Editar produto"
-                  onClick={handleEditProduct}
-                  />
-                 </div>
+                    <SelectOrder 
+                    id="select-order"
+                    icon={list}
+                    product={data}
+                    titleButton={handleTitleWithPrice(data.prices)}
+                    />
+
 
                     
               </div>

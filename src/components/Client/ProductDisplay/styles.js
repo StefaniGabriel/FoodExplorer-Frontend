@@ -19,6 +19,7 @@ export const Container = styled.div`
     
 
     .carousel-product {
+        position: relative;
         display: flex;
         flex-direction: row;
         gap: ${responsive(12)};
@@ -33,7 +34,7 @@ export const Container = styled.div`
     }
 
     .preview-product {
-       
+        
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -51,21 +52,7 @@ export const Container = styled.div`
         padding: 0 ${responsive(24)} ${responsive(24)} ${responsive(24)};
 
     }
-
-    .icons-container {
-          margin-top: 16px;
-          align-self: self-end;
-          
-
-            svg {
-                font-size: clamp(1.2rem, 2vw, 1.6rem);
-                color: ${({ theme }) => theme.COLORS.WHITE700};
-                &:hover {
-                    opacity: 0.5;
-                }
-            }
-        }
-
+  
         .name-container{
             display: flex;
             align-items: center;
@@ -74,7 +61,7 @@ export const Container = styled.div`
             
             svg{
                 color: ${({ theme }) => theme.COLORS.WHITE700};
-                font-size: clampq(1.2rem, 2vw, 1.6rem);
+                font-size: clamp(1.2rem, 2vw, 1.6rem);
                 margin-top: 0.3rem;
             }
         }
@@ -112,39 +99,10 @@ export const Container = styled.div`
         height: clamp(4.4rem, 10vw, 8.8rem);
         border-radius: 50%;
         object-fit: cover;
+        margin-top: ${responsive(15)};
     }
-
-    .select-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: ${responsive(10)};
 
    
-
-        .select {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: ${responsive(10)};
-        }
-
-        #select-value{
-            color: ${({ theme }) => theme.COLORS.WHITE900};
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            font-weight: 400;
-        }
-
-        #add-button{
-            height: ${responsive(40)};
-        }
-
-        svg {
-            font-size: clamp(1.2rem, 2vw, 1.6rem);
-        }
-
-       
-    }
 
     .carousel-buttons {
         display: none;
@@ -155,8 +113,6 @@ export const Container = styled.div`
         .carousel-product {
             margin: 0 ${responsive(100)};
 
-            
-        
         }
       
         .preview-product {
@@ -169,15 +125,11 @@ export const Container = styled.div`
 
         }
 
-        .select-container{
-            flex-direction: row;
-        }
-
-
         .description-product{
             display: block;
             font-size: clamp(0.6rem,0.6rem + 2vw, 0.8rem);
             color: ${({ theme }) => theme.COLORS.GRAY800};
+        
 
             overflow: hidden;
             text-overflow: ellipsis;
@@ -207,7 +159,9 @@ export const Container = styled.div`
 
         .carousel-buttons {
         position: relative;
+        display: block;
         
+        width: 100%;
         }
 
         
@@ -217,7 +171,7 @@ export const Container = styled.div`
             position: absolute;
             top: 0;
             bottom: 0;
-            right: auto;
+            right: 0;
             left: 0;
             z-index: 1;
 

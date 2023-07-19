@@ -1,17 +1,28 @@
 import { Container, InputSearch } from "./styles";
+
+import React, { useContext } from 'react';
+
 import { FaBars } from 'react-icons/fa';
 import { FiLogOut} from 'react-icons/fi';
 
-
-import list from "../../../assets/icon/list.svg"
 import logo from "../../../assets/logo/logo.svg"
 
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/auth";
 
-export function Header({ children }){
+import { Order } from "../Order";
+
+import { OrderContext } from "../../../Provider";
+
+
+export function Header({ children}){
+
+    const { quantity } = useContext(OrderContext);
+
+    
     const { signOut } = useAuth();
     const navigate = useNavigate();
+
 
     function goMenu(){
         navigate("/client/menu");
@@ -24,7 +35,6 @@ export function Header({ children }){
     }
 
  
-
     return(
         <Container>
 
@@ -40,27 +50,14 @@ export function Header({ children }){
 
             </div>
 
-           
             <InputSearch>
-            
             {children}
             </InputSearch>
-        
 
-            <button 
-            className="new-order"
-            >
-            <img src={list} />
-            Pedido (0)
-                
-            </button>
-
-            <div 
-            className="list-mobile">
-            <img src={list} />
-            <span id="number-order">0</span>
-                
-            </div>
+            <Order
+            numberOrder={quantity}
+            
+            />
 
             <FiLogOut className="FiLogOut" 
             onClick={handleLogout}/>
