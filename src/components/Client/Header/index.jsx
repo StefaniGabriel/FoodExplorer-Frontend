@@ -12,7 +12,6 @@ import { useAuth } from "../../../hooks/auth";
 
 import { Order } from "../Order";
 
-import { OrderContext } from "../../../Provider";
 
 
 export function Header({ children}){

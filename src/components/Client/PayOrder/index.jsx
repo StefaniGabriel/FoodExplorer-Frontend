@@ -12,7 +12,9 @@ import { useNavigate } from "react-router-dom";
 
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { TbCircleCheck } from "react-icons/tb";
-import { BiLike } from "react-icons/bi";
+
+import { OrderContext } from "../../../Provider";
+
 
 export function PayOrder() {
     const [status, setStatus] = useState(null); 
