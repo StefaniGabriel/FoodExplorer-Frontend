@@ -121,6 +121,9 @@ export function EditProduct(){
             if(fileImage){
                 await api.patch(`/product/image/${params.id}`, data);
             }
+
+            alert('Produto editado com sucesso!');
+            navigate('/admin');
            
         } catch(err){
             alert('Erro ao editar produto, tente novamente.')

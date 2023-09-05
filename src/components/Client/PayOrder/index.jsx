@@ -8,12 +8,11 @@ import cutlery from "../../../assets/icon/cutlery.svg";
 import { FiClock } from "react-icons/fi";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { TbCircleCheck } from "react-icons/tb";
 
-import { OrderContext } from "../../../Provider";
+
 
 
 export function PayOrder() {
@@ -22,8 +21,8 @@ export function PayOrder() {
     const pix = document.querySelector(".pix");
     const btnPix = document.querySelector(".btn-pix");
     const btnCredit = document.querySelector(".btn-credit");
+ 
 
-    const navigate = useNavigate();
 
     function displayCredit() {
         pix.classList.remove("active");

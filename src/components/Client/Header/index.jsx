@@ -1,6 +1,6 @@
 import { Container, InputSearch } from "./styles";
 
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 import { FaBars } from 'react-icons/fa';
 import { FiLogOut} from 'react-icons/fi';
@@ -12,13 +12,13 @@ import { useAuth } from "../../../hooks/auth";
 
 import { Order } from "../Order";
 
+import { OrderContext } from "../../../Provider";
 
 
 export function Header({ children}){
 
     const { quantity } = useContext(OrderContext);
 
-    
     const { signOut } = useAuth();
     const navigate = useNavigate();
 
@@ -27,6 +27,9 @@ export function Header({ children}){
         navigate("/client/menu");
     }
 
+   function goHome(){
+         navigate("/client")
+    }
 
     function handleLogout(){
         signOut();
@@ -39,7 +42,9 @@ export function Header({ children}){
 
             <FaBars className="FaBars" onClick={goMenu} />
     
-            <div className="logo" >
+            <div className="logo" 
+            onClick={goHome}
+            >
             <img src={logo} />
 
             <div className="logo-text">
@@ -55,7 +60,7 @@ export function Header({ children}){
 
             <Order
             numberOrder={quantity}
-            
+          
             />
 
             <FiLogOut className="FiLogOut" 

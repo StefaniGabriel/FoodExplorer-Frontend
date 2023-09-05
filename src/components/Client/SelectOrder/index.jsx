@@ -7,18 +7,14 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 import { Header } from "../Header";
 import { OrderContext } from "../../../Provider";
 
-
-
     export function SelectOrder({product, titleButton, icon}){
     const [selectValue, setSelectValue] = useState(0);
     const [order, setOrder] = useState([]);
     
-    const { quantity, updateQuantity } = useContext(OrderContext);
+    const { quantity, updateQuantity, updateCart, updateIdQuantity} = useContext(OrderContext);
 
 
     function handleSelectValue(value){
-        
-
         if(value === 0){
             setSelectValue(0);
         }if(value < 0){
@@ -27,6 +23,8 @@ import { OrderContext } from "../../../Provider";
         else{
           
             setSelectValue(value);
+
+
         }
 
     }
@@ -44,6 +42,10 @@ import { OrderContext } from "../../../Provider";
         handleOrder();
 
         updateQuantity(quantity + selectValue);
+
+        updateCart([...order, product]);
+
+        updateIdQuantity(product.id, selectValue);
 
         setSelectValue(0);
 
