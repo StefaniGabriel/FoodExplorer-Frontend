@@ -3,19 +3,26 @@ import React, { createContext, useState } from 'react';
 const OrderContext = createContext();
 
 function OrderContextProvider({ children }) {
-  const [quantity, setQuantity] = useState(0);
+  const localQuantity = localStorage.getItem('quantity');
+
+  const [quantity, setQuantity] = useState(localQuantity || 0);
   const [cart, setCart] = useState([]);
   const [idProduct, setIdProduct] = useState([]);
 
+ 
 
 
 
   const updateQuantity = (newQuantity) => {
-    setQuantity(newQuantity);
-  };
+      setQuantity(newQuantity);
+
+      localStorage.removeItem('quantity');
+      localStorage.setItem('quantity', newQuantity);
+   
+   };
 
   const updateCart = (newCart) => {
-    setCart([...prev, newCart]);
+    setCart(prev => [...prev, newCart]);
 
   }
 
